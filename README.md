@@ -2,6 +2,25 @@
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
+## Deployment
+
+### Create the Application
+
+Run:
+
+    fly launch
+    fly scale memory 512
+
+Change `CMD [ "npm", "run", "start" ]` to `CMD [ "npm", "run", "serve", "--", "--port" "8080" ]`.
+
+### Deploy
+
+    fly deploy
+
+### Open Site
+
+    fly open
+
 ### Installation
 
 ```
