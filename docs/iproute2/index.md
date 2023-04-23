@@ -1,3 +1,0 @@
-# IP route
-
-Index page
