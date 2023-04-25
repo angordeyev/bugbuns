@@ -27,7 +27,7 @@ This command starts a local development server and opens up a browser window. Mo
 
 #### Comments
 
-NGINX is used to run site with the latest official NGINX Docker container. Default NGINX `./nginx.conf` config is used with the `server` section modified. 
+NGINX is used to run the site with the latest official NGINX Docker container. Default NGINX `./nginx.conf` config is used with the `server` section modified. 
 
 Redirect from the subdomain to the main domain to improve SEO:
 
