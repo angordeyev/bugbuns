@@ -4,7 +4,7 @@
 
 ## Taking Latest Docker Image
 
-Go to https://hub.docker.com/_/<repository-name>/tags
+Go to `https://hub.docker.com/_/<repository-name>/tag`
 
 ## Differeneces between ADD and COPY
 
@@ -18,9 +18,9 @@ COPY is preffered according to [the best practices](https://docs.docker.com/deve
 
 From Dockerfile reference:
 
-The ARG instruction defines a variable that users can pass at build-time to the builder with the docker build command using the --build-arg <varname>=<value> flag.
+The ARG instruction defines a variable that users can pass at build-time to the builder with the docker build command using the `--build-arg <varname>=<value>` flag.
 
-The ENV instruction sets the environment variable <key> to the value <value>.
+The ENV instruction sets the environment variable `<key>` to the value `<value>`.
 The environment variables set using ENV will persist when a container is run from the resulting image.
 
 [Docker ARG, ENV and .env - a Complete Guide](https://vsupalov.com/docker-arg-env-variable-guide/)
