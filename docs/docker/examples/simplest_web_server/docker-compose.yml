@@ -1,0 +1,6 @@
+services:
+  simplest-web-server:
+    build: .
+    ports:
+      - target: 8080
+        published: 80

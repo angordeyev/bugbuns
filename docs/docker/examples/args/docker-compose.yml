@@ -1,0 +1,9 @@
+services:
+  args:
+    build:
+      context: .
+      args:
+        PORT: 8082
+    ports:
+      - target: 8082
+        published: 8082
