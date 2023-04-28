@@ -14,5 +14,4 @@ Mapping TCP port
 
 Mapping UDP port
 
-
     docker run <image> -p 12000:1200/udp

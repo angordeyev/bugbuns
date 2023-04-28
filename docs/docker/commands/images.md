@@ -6,21 +6,25 @@
 
 Pull an image with the default tag
 
-    ➜ docker pull alpine
+    docker pull alpine
 
 Pull an image with tag
 
-    ➜ docker pull ubuntu:latest 
+    docker pull ubuntu:latest 
 
 Push docker image to repository
  
-    ➜ docker image push <repository_name>
+    docker image push <repository_name>
 
 List local images
 
-    ➜ docker images
-    ubuntu                    latest      2dc39ba059dc   2 weeks ago    77.8MB
-    alpine                    latest      9c6f07244728   6 weeks ago    5.54MB
+```sh
+docker images
+```
+```output
+ubuntu                    latest      2dc39ba059dc   2 weeks ago    77.8MB
+alpine                    latest      9c6f07244728   6 weeks ago    5.54MB
+```
 
 Seach docker images 
 
