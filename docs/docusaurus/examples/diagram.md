@@ -1,6 +1,4 @@
-# Sandbox
-
-## Diagram
+# Diagrams
 
 ```mermaid
 graph TD;
