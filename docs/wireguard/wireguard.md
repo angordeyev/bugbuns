@@ -1,6 +1,6 @@
 # WireGuard
 
-## Installing Wireguard
+## Installing WireGuard
 
     sudo apt update && apt install wireguard
 
@@ -15,7 +15,7 @@ Enable forward and reload system configuration
     sudo sed -i 's/# *net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
     sysctl -p
 
-Install Wireguard
+Install WireGuard
 
     apt install wireguard
 
@@ -87,7 +87,7 @@ Enable forward and reload system configuration
     ➜ sudo sed -i 's/# *net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
     ➜ sysctl -p
 
-Install Wireguard
+Install WireGuard
 
     ➜ apt install wireguard
 
@@ -250,7 +250,7 @@ EOF
 
 #### Existing config
 
-Install Wireguard
+Install WireGuard
 
     sudo pacman -S wireguard-tools
 
@@ -308,7 +308,7 @@ Chech network interface
 
     ip a
 
-Wireguard server status
+WireGuard server status
 
     sudo systemctl status wg-quick@wg0
 
