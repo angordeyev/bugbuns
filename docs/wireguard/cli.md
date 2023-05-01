@@ -12,7 +12,7 @@ wg set wg0 peer <peer_public_key>
 wg set wg0 peer <peer_public_key> allowed-ips <peer_private_address>
 ```
 
-## Remove Peer
+## Remove a Peer
 
 ```cmd
 wg set wg0 peer <peer_public_key> remove

@@ -41,9 +41,9 @@ Check if the service is running
 
 Set client ip address and generate client keys
 
-    ➜ CLIENT_IP_ADDRESS=10.0.0.3 &&
-      CLIENT_PRIVATE_KEY=$(wg genkey) &&
-      CLIENT_PUBLIC_KEY=$(echo ${CLIENT_PRIVATE_KEY} | wg pubkey)
+    CLIENT_IP_ADDRESS=10.0.0.3 &&
+    CLIENT_PRIVATE_KEY=$(wg genkey) &&
+    CLIENT_PUBLIC_KEY=$(echo ${CLIENT_PRIVATE_KEY} | wg pubkey)
 
 Add client peer
 
@@ -86,29 +86,29 @@ EOF
 
 Restart the service
 
-    ➜ sudo systemctl restart wg-quick@wg0
+    sudo systemctl restart wg-quick@wg0
 
 ### On Client
 
 Install WireGuard and resolveconf 
 
-    ➜ sudo apt install wireguard resolvconf
+    sudo apt install wireguard resolvconf
 
 Copy the client config generated on the server to 
 
-    ➜ nano /etc/wireguard/wg0.conf
+    nano /etc/wireguard/wg0.conf
 
 Start client
 
-    ➜ sudo wg-quick up wg0
+    sudo wg-quick up wg0
     
 Try to ping server
 
-    ➜ ping 10.0.0.1
+    ping 10.0.0.1
 
 Check addeded peer, see `handshake` and `transfer`
 
-    ➜ sudo wg
+    sudo wg
     interface: wg0
       ...
     peer: ...

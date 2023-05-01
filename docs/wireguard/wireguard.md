@@ -257,7 +257,7 @@ Install Wireguard
 Copy config from server
 
     ssh root@178.62.226.219 "sudo cat /etc/wireguard/wg_client1.conf" | \
-     sudo tee /etc/wireguard/wg0.conf > /dev/null
+    sudo tee /etc/wireguard/wg0.conf > /dev/null
 
 Start/stop
 
@@ -328,11 +328,11 @@ Simple web server
 
 Forwarding
 
-    ➜ iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+    iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 Delete interface
 
-    ➜ sudo ip link delete wg0
+    sudo ip link delete wg0
 
 ## Resources
 
