@@ -62,7 +62,7 @@ const config = {
     ],
   ],
 
-  themes: ['@docusaurus/theme-live-codeblock'],
+  themes: ['@docusaurus/theme-live-codeblock', '@docusaurus/theme-mermaid'],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -140,6 +140,10 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+
+  markdown: {
+    mermaid: true,
+  }
 };
 
 module.exports = config;

@@ -1,3 +1,8 @@
 # Sandbox
 
-- [ ] Commits style
+## Diagram
+
+```mermaid
+graph TD;
+A --> H
+```
