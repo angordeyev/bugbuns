@@ -38,19 +38,19 @@ EOF
 
 Start as service
 
-    ➜ sudo systemctl enable --now wg-quick@wg0
+    sudo systemctl enable --now wg-quick@wg0
 
 Check if the service is running
 
-    ➜ sudo systemctl status wg-quick@wg0
+    sudo systemctl status wg-quick@wg0
 
 ### Generating client configs manually
 
 Set client ip address and generate client keys
 
-    ➜ CLIENT_IP_ADDRESS=10.0.0.2 &&
-      CLIENT_PRIVATE_KEY=$(wg genkey) &&
-      CLIENT_PUBLIC_KEY=$(echo ${CLIENT_PRIVATE_KEY} | wg pubkey)
+    CLIENT_IP_ADDRESS=10.0.0.2 &&
+    CLIENT_PRIVATE_KEY=$(wg genkey) &&
+    CLIENT_PUBLIC_KEY=$(echo ${CLIENT_PRIVATE_KEY} | wg pubkey)
 
 Add client peer
 
@@ -66,13 +66,13 @@ EOF
 
 Restart the service
 
-    ➜ sudo systemctl restart wg-quick@wg0
+    sudo systemctl restart wg-quick@wg0
     
 Check added peer
 
-    ➜ sudo wg
+    sudo wg
     peer: <peer_public_key>
-      allowed ips: 10.0.0.0/24
+    allowed ips: 10.0.0.0/24
 
 Get server keys and ip address
 
@@ -80,16 +80,16 @@ Get server keys and ip address
 
 Upgrade OS
 
-    ➜ sudo apt update && sudo apt upgrade
+    sudo apt update && sudo apt upgrade
 
 Enable forward and reload system configuration
 
-    ➜ sudo sed -i 's/# *net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
-    ➜ sysctl -p
+    sudo sed -i 's/# *net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
+    sysctl -p
 
 Install WireGuard
 
-    ➜ apt install wireguard
+    apt install wireguard
 
 ## Adding peer
 
