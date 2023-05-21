@@ -1,3 +1,3 @@
 # TODO
 
-- [ ] Redirect from `bugbuns.fly.dev` to `bugbuns.com`
+- [x] Redirect from `bugbuns.fly.dev` to `bugbuns.com`
