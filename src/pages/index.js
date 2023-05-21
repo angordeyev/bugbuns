@@ -2,7 +2,7 @@ import React from 'react';
 import {Redirect} from '@docusaurus/router';
 
 export default function Home() {
-  return <Redirect to="/topics" />;
+  return <Redirect to="/topics/introduction" />;
 };
 
 // import React from 'react';
