@@ -2,6 +2,8 @@
 
 ## Most Used Keys
 
-<kbd>Space</kbd>- select  
-<kbd>Ctrl</kbd>+<kbd>Q</kbd> - exit  
-<kbd>Ctrl</kbd>+<kbd>R</kbd> - rename
+| Keyboard shortcut            | Description  |
+| ---------------------------- | ------------ |
+| <kbd>Ctrl</kbd>+<kbd>Q</kbd> | Exit         |
+| <kbd>Space</kbd>             | Select       |
+| <kbd>Ctrl</kbd>+<kbd>R</kbd> | Rename       |
