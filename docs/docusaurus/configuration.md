@@ -41,3 +41,18 @@ https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs
         ...
       ],
     ],
+
+## Docs as the Start Page
+
+1. Change `src/pages/index.js` to
+
+```js
+import React from 'react';
+import {Redirect} from '@docusaurus/router';
+
+export default function Home() {
+  return <Redirect to="/docs" />;
+};
+```
+
+2. Create a doc page with  `slug: /`
