@@ -3,7 +3,7 @@
 ## Interpolation
 
 ```julia
-x = 1
+x = 1 
 y = "Hello $x"
 ```
 ```output
@@ -13,7 +13,7 @@ y = "Hello $x"
 ## Subsrings compatible with Unicode
 
 ```julia
-function substr_first_last(string::String, first:: Integer, last:: Ineger)
+function substr_first_last(string::String, first:: Integer, last:: Integer)
   indexes = collect(eachindex(string))
   first = indexes[first]
   last = indexes[last]
