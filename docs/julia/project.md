@@ -33,3 +33,6 @@ shell>cd MyProject
 mkdir docs test
 ```
 
+## Resources
+
+[Creating a New Project](https://www.matecdev.com/posts/julia-create-project.html)
