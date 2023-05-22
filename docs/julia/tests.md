@@ -1,5 +1,7 @@
 # Tests
 
+## Create Tests
+
 Add `Tests` package
 
 ```sh
@@ -28,7 +30,7 @@ Activate the project
 ```
 our run the project using `julia --project=.`
 
-Run tests
+## Run tests
 
 ```sh
 (MyProject) pkg> test
