@@ -1,4 +1,4 @@
-# Julia cmd
+# Julia CLI
 
 Evaluate code
 
