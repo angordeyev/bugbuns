@@ -1,6 +1,17 @@
 # Packages
 
-## Using PkgTemplates
+## Reference Packages
+
+### Using GitHub Repo
+
+```sh
+pkg> add https://github.com/ChrisRackauckas/LinkedLists.jl
+julia> using LinkedLists
+```
+
+## Crate a new Package
+
+### Using PkgTemplates
 
 Using julia console
 
@@ -32,7 +43,12 @@ function j-cp() {
 
 Using shell
 
-## Using generate and pkg
+### Using generate and pkg
+
+```sh
+pkg> generate Mypackage
+pkg> activate .
+```
 
 ## Resources
 
