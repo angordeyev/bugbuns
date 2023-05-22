@@ -52,7 +52,7 @@ pkg> activate .
 
 ## Resources
 
-* [Pkg.jl Docs](pkgdocs.julialang.org)
+* [Pkg.jl Docs](https://pkgdocs.julialang.org)
 * [How to create packages for Julia by Joy Kareko](https://www.educative.io/answers/how-to-create-packages-for-julia)
 * [Finalizing Your Julia Package: Documentation, Testing, Coverage, and Publishing by Christopher Rackauckas](http://www.stochasticlifestyle.com/finalizing-julia-package-documentation-testing-coverage-publishing/)
 * [Developing your Julia package by DSB.](https://medium.com/coffee-in-a-klein-bottle/developing-your-julia-package-682c1d309507)
