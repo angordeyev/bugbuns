@@ -54,3 +54,23 @@ Mount boot partition
 Copy the content to the `/tmp/boot` directory
 
     sudo mkdir -p /tmp/boot/EFI && sudo cp -r /tmp/refind-bin-0.14.0.2/refind $_
+
+Rename the rEFInd config
+
+    sudo mv /tmp/boot/EFI/refind/refind.conf-sample /tmp/boot/EFI/refind/refind.conf
+
+Check if rEFIind bootloader exist
+
+    sudo efibootmgr -v
+
+Add rEFInd to EFI's list of available boot loaders
+
+    sudo efibootmgr -d ${DISK} -c -l  \\EFI\\refind\\refind_x64.efi -L rEFInd
+
+Show boot tentries
+
+    sudo efibootmgr
+
+Remove boot entries entries in the list, using "Boot000i" index
+
+    sudo efibootmgr -b <i> -B # remove the item with name Boot000i
