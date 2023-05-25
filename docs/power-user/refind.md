@@ -2,7 +2,8 @@
 
 ## Shortcuts
 
-<kbd>Esc<kbd> - Show rEFInd on startup
+<kbd>F2></kbd> - Enter UEFO on many systems
+<kbd>Esc</kbd> - Show rEFInd on startup
 
 ## Concepts
 
@@ -38,8 +39,7 @@ Reload the partitions in the OS
 
     sudo partprobe $DISK
 
-[Downlod rEFInd binary zip file](https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download
-) from [Getting rEFInd page](https://www.rodsbooks.com/refind/getting.html) or using the dowlnlaod link.
+[Downlod rEFInd binary zip file](https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download) from [Getting rEFInd page](https://www.rodsbooks.com/refind/getting.html) or using the download link.
 
     wget -O /tmp/refind-bin-0.14.0.2.zip https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download
 
@@ -67,10 +67,31 @@ Add rEFInd to EFI's list of available boot loaders
 
     sudo efibootmgr -d ${DISK} -c -l  \\EFI\\refind\\refind_x64.efi -L rEFInd
 
-Show boot tentries
+## Configure rEFInd
+
+Mount the EFI partition
+
+    DISK=/dev/<disk>
+    sudo mount -m ${DISK}1 /tmp/boot
+
+Change timeout to load the default OS immediately
+
+    sudo sed -i 's/timeout.*/timeout -1/' /tmp/boot/EFI/refind/refind.conf
+
+Change resolution
+
+    sudo sed -i 's/#resolution 1024 768.*/resolution 1920 1080/' /tmp/boot/EFI/refind/refind.conf
+
+## Manage EFI Boot Entries
+
+Show boot entries
 
     sudo efibootmgr
 
-Remove boot entries entries in the list, using "Boot000i" index
+Remove boot entries in the list, using `Boot000<i>` index
 
     sudo efibootmgr -b <i> -B # remove the item with name Boot000i
+
+Show PARTUUIDs used in boot entries
+
+    sudo blkid -s PARTUUID
