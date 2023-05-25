@@ -2,7 +2,7 @@
 
 ## Shortcuts
 
-<kbd>Esc<kbd> - Show rEFInd on startup
+<kbd>Esc</kbd> - Show rEFInd on startup
 
 ## Concepts
 
