@@ -57,15 +57,15 @@ Unzip archive
 
 Mount boot partition
 
-    sudo mount -m ${DISK}1 /tmp/boot
+    sudo mount -m ${DISK}1 /mnt/boot # or sudo mount -o X-mount.mkdir ${DISK}1 /mnt/boot
 
-Copy the content to the `/tmp/boot` directory
+Copy the content to the `/mnt/boot` directory
 
-    sudo mkdir -p /tmp/boot/EFI && sudo cp -r /tmp/refind-bin-0.14.0.2/refind $_
+    sudo mkdir -p /mnt/boot/EFI && sudo cp -r /tmp/refind-bin-0.14.0.2/refind $_
 
 Rename the rEFInd config
 
-    sudo mv /tmp/boot/EFI/refind/refind.conf-sample /tmp/boot/EFI/refind/refind.conf
+    sudo mv /mnt/boot/EFI/refind/refind.conf-sample /mnt/boot/EFI/refind/refind.conf
 
 Check if rEFIind boot manager exist
 
@@ -85,16 +85,17 @@ Remove boot entries in the list, using `Boot000<i>` index
 
     sudo efibootmgr -b <i> -B # remove the item with name Boot000i
 
-Show PARTUUIDs used in boot entries
+Show PARTUUIDs used in ESPs
 
-    sudo blkid -s PARTUUID
+    sudo blkid -s PARTUUID -t TYPE=vfat
 
 ## Configure rEFInd
 
 Mount the EFI partition
 
     DISK=/dev/<disk>
-    sudo mount -m ${DISK}1 /tmp/boot
+    
+    sudo mount -m ${DISK}1 /mnt/boot # or sudo mount -o X-mount.mkdir ${DISK}1 /mnt/boot
 
 Change timeout to load the default OS immediately
 
@@ -102,9 +103,11 @@ Change timeout to load the default OS immediately
 
 Change resolution
 
-    sudo sed -i 's/#resolution 1024 768.*/resolution 1920 1080/' /tmp/boot/EFI/refind/refind.conf
+    sudo sed -i 's/#resolution 1024 768.*/resolution 1920 1080/' /mnt/boot/EFI/refind/refind.conf
 
 ## Theming
 
 [Refind theming page](https://www.rodsbooks.com/refind/themes.html)
 [GitHub rEFInd topic](https://github.com/topics/refind)
+[rEFIind page in Arch Linux wiki](https://wiki.archlinux.org/title/REFInd)
+
