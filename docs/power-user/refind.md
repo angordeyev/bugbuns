@@ -1,4 +1,6 @@
-# rEFInd Boot Manager
+# rEFInd
+
+Working with rEFInd boot manager
 
 ## Shortcuts
 
@@ -7,7 +9,7 @@
 
 ## Concepts
 
-ESP - The EFI system partition for the UEFI boot loader
+ESP - The EFI system partition for the UEFI boot manager
 
 ## Site
 
@@ -65,11 +67,11 @@ Rename the rEFInd config
 
     sudo mv /tmp/boot/EFI/refind/refind.conf-sample /tmp/boot/EFI/refind/refind.conf
 
-Check if rEFIind bootloader exist
+Check if rEFIind boot manager exist
 
     sudo efibootmgr -v
 
-Add rEFInd to EFI's list of available boot loaders
+Add rEFInd to EFI's list of available bootloaders
 
     sudo efibootmgr -d ${DISK} -c -l  \\EFI\\refind\\refind_x64.efi -L rEFInd
 
