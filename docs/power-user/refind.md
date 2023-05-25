@@ -1,4 +1,4 @@
-# [rEFInd Boot Manager](https://www.rodsbooks.com/refind/)
+# rEFInd Boot Manager
 
 ## Shortcuts
 
@@ -9,9 +9,13 @@
 
 ESP - The EFI system partition for the UEFI boot loader
 
+## Site
+
+https://www.rodsbooks.com/refind/
+
 ## Installation on a New Device
 
-Show devices
+Show the system devices
 
     lsblk
 
@@ -39,7 +43,9 @@ Reload the partitions in the OS
 
     sudo partprobe $DISK
 
-[Downlod rEFInd binary zip file](https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download) from [Getting rEFInd page](https://www.rodsbooks.com/refind/getting.html) or using the download link.
+Check the lates version by going to [rEFInd page](https://www.rodsbooks.com/refind/getting.html)
+
+[Download](https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download) rEFInd binary zip file
 
     wget -O /tmp/refind-bin-0.14.0.2.zip https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download
 
@@ -67,6 +73,20 @@ Add rEFInd to EFI's list of available boot loaders
 
     sudo efibootmgr -d ${DISK} -c -l  \\EFI\\refind\\refind_x64.efi -L rEFInd
 
+## Manage EFI Boot Entries
+
+Show boot entries
+
+    sudo efibootmgr
+
+Remove boot entries in the list, using `Boot000<i>` index
+
+    sudo efibootmgr -b <i> -B # remove the item with name Boot000i
+
+Show PARTUUIDs used in boot entries
+
+    sudo blkid -s PARTUUID
+
 ## Configure rEFInd
 
 Mount the EFI partition
@@ -82,16 +102,7 @@ Change resolution
 
     sudo sed -i 's/#resolution 1024 768.*/resolution 1920 1080/' /tmp/boot/EFI/refind/refind.conf
 
-## Manage EFI Boot Entries
+## Theming
 
-Show boot entries
-
-    sudo efibootmgr
-
-Remove boot entries in the list, using `Boot000<i>` index
-
-    sudo efibootmgr -b <i> -B # remove the item with name Boot000i
-
-Show PARTUUIDs used in boot entries
-
-    sudo blkid -s PARTUUID
+[Refind theming page](https://www.rodsbooks.com/refind/themes.html)
+[GitHub rEFInd topic](https://github.com/topics/refind)
