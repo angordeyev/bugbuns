@@ -2,20 +2,40 @@
 
 Working with rEFInd boot manager
 
+## Concepts
+
+ESP - EFI system partition for a UEFI boot manager
+
+## Quick Install
+
+Set a ESP to install rEFInd
+
+    DISK=/dev/sd<x><y>
+
+Run the script below. **Be careful it will overwrite the disk data!**
+
+    # Install refind to the default folder
+    sudo refind-install --usedefault ${DISK}
+
+    # Mount partition
+    sudo mount ${DISK} /mnt/boot
+
+    # Change timeout to load the default OS immediately
+    sudo sed -i 's/timeout.*/timeout -1/' /mnt/boot/EFI/refind/refind.conf
+
+    # Change resolution
+    sudo sed -i 's/#resolution 1024 768.*/resolution 1920 1080/' /mnt/boot/EFI/refind/refind.conf
+
 ## Shortcuts
 
 <kbd>F2></kbd> - Enter UEFO on many systems
 <kbd>Esc</kbd> - Show rEFInd on startup
 
-## Concepts
-
-ESP - The EFI system partition for the UEFI boot manager
-
 ## Site
 
 https://www.rodsbooks.com/refind/
 
-## Installation on a New Device
+## Prepare the Disk for a New System Installation
 
 Show the system devices
 
@@ -45,7 +65,9 @@ Reload the partitions in the OS
 
     sudo partprobe $DISK
 
-Check the lates version by going to [rEFInd page](https://www.rodsbooks.com/refind/getting.html)
+## Manual Installation
+
+Check the latest version by going to [rEFInd page](https://www.rodsbooks.com/refind/getting.html)
 
 [Download](https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download) rEFInd binary zip file
 
@@ -63,6 +85,12 @@ Copy the content to the `/mnt/boot` directory
 
     sudo mkdir -p /mnt/boot/EFI && sudo cp -r /tmp/refind-bin-0.14.0.2/refind $_
 
+Rename the directoy and the file to the default UIFI names if required (useful for removable flash USB drives)
+
+    sudo mv /mnt/boot/EFI/refind /mnt/boot/EFI/BOOT
+
+    sudo mkdir -p /mnt/boot/EFI && sudo cp -r /tmp/refind-bin-0.14.0.2/refind $_
+
 Rename the rEFInd config
 
     sudo mv /mnt/boot/EFI/refind/refind.conf-sample /mnt/boot/EFI/refind/refind.conf
@@ -71,7 +99,7 @@ Check if rEFIind boot manager exist
 
     sudo efibootmgr -v
 
-Add rEFInd to EFI's list of available bootloaders
+Add rEFInd to EFI's list of available bootloaders **if the default path is not used**
 
     sudo efibootmgr -d ${DISK} -c -l  \\EFI\\refind\\refind_x64.efi -L rEFInd
 
@@ -110,4 +138,3 @@ Change resolution
 [Refind theming page](https://www.rodsbooks.com/refind/themes.html)
 [GitHub rEFInd topic](https://github.com/topics/refind)
 [rEFIind page in Arch Linux wiki](https://wiki.archlinux.org/title/REFInd)
-
