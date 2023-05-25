@@ -1,4 +1,4 @@
-# [rEFInd Boot Manager](https://www.rodsbooks.com/refind/)
+# rEFInd Boot Manager
 
 ## Shortcuts
 
@@ -8,9 +8,13 @@
 
 ESP - The EFI system partition for the UEFI boot loader
 
+## Site
+
+https://www.rodsbooks.com/refind/
+
 ## Installation on a New Device
 
-Show devices
+Show the system devices
 
     lsblk
 
@@ -38,8 +42,10 @@ Reload the partitions in the OS
 
     sudo partprobe $DISK
 
-[Downlod rEFInd binary zip file](https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download
-) from [Getting rEFInd page](https://www.rodsbooks.com/refind/getting.html) or using the dowlnlaod link.
+Check the lates version by going to [rEFInd page](https://www.rodsbooks.com/refind/getting.html)
+
+[Download](https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download
+) rEFInd binary zip file
 
     wget -O /tmp/refind-bin-0.14.0.2.zip https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download
 
@@ -54,3 +60,9 @@ Mount boot partition
 Copy the content to the `/tmp/boot` directory
 
     sudo mkdir -p /tmp/boot/EFI && sudo cp -r /tmp/refind-bin-0.14.0.2/refind $_
+
+
+## Theming
+
+[Refind theming page](https://www.rodsbooks.com/refind/themes.html)
+[GitHub rEFInd topic](https://github.com/topics/refind)
