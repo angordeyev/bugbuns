@@ -8,27 +8,56 @@ ESP - EFI system partition for a UEFI boot manager
 
 ## Quick Install
 
+Show the system devices
+
+    lsblk
+
 Set a ESP to install rEFInd
 
-    DISK=/dev/sd<x><y>
+    DISK=/dev/<device>
 
-Run the script below. **Be careful it will overwrite the disk data!**
+Prepare the disk for a new system Installation, **be careful it will delete the disk data!**
 
-    # Install refind to the default folder
-    sudo refind-install --usedefault ${DISK}
+    # Reload the partition
+    sudo partprobe $DISK
+
+    # Delete partition tables from the device and create the fresh partition tables
+    sudo wipefs --all --force $DISK   # Delete signatures/metadata/magic
+    sudo sgdisk --zap-all $DISK       # Delete GPT and MBR
+    sudo sgdisk --clear $DISK         # Create fresh GPT and protective MBR
+
+    # Create the partitions
+    sudo sgdisk -n1:2048:+512M -t1:EF00 $DISK   # ESP
+    sudo sgdisk -n2 $DISK                       # Remaining space for Linux partition
+
+    # Get the partitions names
+    DISK1=/dev/$(sudo lsblk -J ${DISK} | jq -r '.blockdevices[0].children[0].name')
+    DISK2=/dev/$(sudo lsblk -J ${DISK} | jq -r '.blockdevices[0].children[1].name')
+
+    # Format the partitions
+    sudo mkfs.vfat ${DISK1} # ESP
+    sudo mkfs.ext4 ${DISK2} # Linux parition
+
+Run the script below, **be careful it will overwrite the disk data!**
+
+    # Install rEFInd to the default folder
+    sudo refind-install --usedefault ${DISK1}
 
     # Mount partition
-    sudo mount ${DISK} /mnt/boot
+    sudo mount ${DISK1} /mnt/boot
 
     # Change timeout to load the default OS immediately
-    sudo sed -i 's/timeout.*/timeout -1/' /mnt/boot/EFI/refind/refind.conf
+    sudo sed -i 's/timeout.*/timeout -1/' /mnt/boot/EFI/BOOT/refind.conf
 
     # Change resolution
-    sudo sed -i 's/#resolution 1024 768.*/resolution 1920 1080/' /mnt/boot/EFI/refind/refind.conf
+    sudo sed -i 's/#resolution 1024 768.*/resolution 1920 1080/' /mnt/boot/EFI/BOOT/refind.conf
+
+    # Unmount
+    sudo umount /mnt/boot
 
 ## Shortcuts
 
-<kbd>F2></kbd> - Enter UEFO on many systems
+<kbd>F2></kbd> - Enter UEFI on many systems
 <kbd>Esc</kbd> - Show rEFInd on startup
 
 ## Site
