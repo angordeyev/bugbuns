@@ -27,7 +27,7 @@ Prepare the disk for a new system Installation, **be careful it will delete the 
     sudo sgdisk --clear $DISK         # Create fresh GPT and protective MBR
 
     # Create the partitions
-    sudo sgdisk -n1:2048:+512M -t1:EF00 $DISK   # ESP
+    sudo sgdisk -n1:2048:+1G -t1:EF00 $DISK   # ESP
     sudo sgdisk -n2 $DISK                       # Remaining space for Linux partition
 
     # Get the partitions names
