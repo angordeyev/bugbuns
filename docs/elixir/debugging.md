@@ -50,6 +50,6 @@ In pry mode
 [Stuff Goes Bad ERLANG IN ANGER, Fred Hebert](https://www.erlang-in-anger.com/)
 [ElixirConf 2020 - Jeffery Utter - Debugging Live Systems on the BEAM](https://youtube.com/watch?v=sR9h3DZAA74)
 [Debugging Elixir Code: The Definitive Guide](https://curiosum.com/blog/debugging-elixir-code-the-definitive-guide)
-[Debugging Elixir Code - The Tools, The Mindset | Michal Buszkiewicz | ElixirConf EU 2021]([https://www.youtube.com/watch?v=x9OMlrrKYyE)
+[Debugging Elixir Code - The Tools, The Mindset | Michal Buszkiewicz | ElixirConf EU 2021]([https://youtube.com/watch?v=x9OMlrrKYyE)
 [Elixir Remote Debugging. Codemancers.](https://crypt.codemancers.com/posts/2017-11-22-elixir-remote-debugging/)
 https://mfeckie.github.io/Remote-Profiling-Elixir-Over-SSH/
