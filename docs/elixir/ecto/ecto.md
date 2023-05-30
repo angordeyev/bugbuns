@@ -206,7 +206,7 @@ Generate changeset
       valid?: true
     >
 
-Changeset is struct, it just implements own inspect format for IO.inspect using "#Ecto.Changeset<>" format
+Changeset is struct, it just implements own inspect format for IO.inspect using `#Ecto.Changeset<>` format
 
     iex> i cs
 
