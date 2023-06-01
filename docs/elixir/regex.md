@@ -2,8 +2,17 @@
 
 ### Cheat Sheet
 
-`.` any caracter
-`*` zero or more
+Character classes
+
+    . - any character
+
+Quantifiers
+
+    ? - zero or one
+    * - zero or more
+    + - one or more
+
+Wildcard
 
 `.*` can be used like a wildcard
 
