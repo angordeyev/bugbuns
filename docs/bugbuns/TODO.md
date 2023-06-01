@@ -1,3 +1,4 @@
 # TODO
 
-- [ ] Shell commands with output format in a a documantation
+- [ ] Shell commands with output format in a documantation
+- [ ] Integrate search
