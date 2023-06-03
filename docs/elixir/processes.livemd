@@ -1,19 +1,21 @@
 # Processes
 
-## Current process info
+## Current Process Info
 
 ```elixir
-# current process id
 self()
 ```
 
+## Get Linked Processes
+
 ```elixir
-# get linked processes
 Process.info(self(), :links)
 ```
 
+## Spawning Processes
+
 ```elixir
-# Different ways to spawn processes
+# Using spawn
 
 spawn(fn -> IO.puts("1") end)
 
@@ -28,6 +30,20 @@ defmodule A do
 end
 
 spawn(&A.a/0)
+```
+
+```elixir
+# Start task
+task = Task.start(fn -> "hello" end)
+IO.inspect(task, label: "Task")
+
+# Async task
+async_task = Task.async(fn -> "async" end)
+IO.inspect(async_task, label: "Async task")
+
+IO.puts("Hello " <> Task.await(async_task))
+
+:ok
 ```
 
 <!-- livebook:{"disable_formatting":true} -->
@@ -74,6 +90,7 @@ defmodule MainModule do
     receive do
       message -> IO.puts(message)
     end
+
     loop()
   end
 end
