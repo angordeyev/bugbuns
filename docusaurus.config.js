@@ -43,6 +43,7 @@ const config = {
           routeBasePath: "topics",
           breadcrumbs: false,
           sidebarPath: require.resolve('./sidebars.js'),
+          include: ['**/*.md', '**/*.mdx', '**/*.livemd'],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:

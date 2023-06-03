@@ -14,7 +14,7 @@ const config = {
 
 ## Presets
 
-Presets are plugins installed by default and can be configured with the same set of attributes as plugins. 
+Presets are plugins installed by default and can be configured with the same set of attributes as plugins.
 
 docs is [plugin-content-docs](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs)
 blog is [plugin-content-blog](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog)
