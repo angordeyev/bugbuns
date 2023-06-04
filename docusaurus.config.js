@@ -144,7 +144,36 @@ const config = {
 
   markdown: {
     mermaid: true,
-  }
+  },
+
+  plugins: [
+     (context, options) => ({
+       configureWebpack(config, isServer, utils, content) {
+         //console.log(context);
+         return {
+           module: {
+             rules: [
+               {
+                 test: /\.livemd$/,
+                 use: [
+                   'babel-loader',
+                   {
+                     loader: '@docusaurus/mdx-loader',
+                     options: {
+                       //rehypePlugins: [mermaid],
+                     }
+                   }
+                 ],
+                 // options: {
+                 //    markdownConfig:  config['markdownConfig'],
+                 // }
+               },
+             ],
+           }
+         };
+       },
+     }),
+   ]
 };
 
 module.exports = config;
