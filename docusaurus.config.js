@@ -65,7 +65,6 @@ const config = {
 
   themes: [
     '@docusaurus/theme-live-codeblock',
-    //'@docusaurus/theme-search-algolia',
     '@docusaurus/theme-mermaid'
   ],
 
@@ -149,7 +148,7 @@ const config = {
         appId: '04Y45A6O48',
 
         // Public API key: it is safe to commit it
-        apiKey: 'f2fd21e273a88227e4b21fe765b0583a',
+        apiKey: '0c2b60c9eea1bf8de2d039129beeb07f',
 
         indexName: 'bugbuns',
 
