@@ -1,16 +1,10 @@
+---
+tags:
+  - Regex
+---
 ## Regular Expressions
 
 ### Cheat Sheet
-
-Character classes
-
-    . - any character
-
-Quantifiers
-
-    ? - zero or one
-    * - zero or more
-    + - one or more
 
 Wildcard
 
@@ -19,6 +13,48 @@ Wildcard
     iex> "hello123" =~ ~r/hello.*/
     iex> "123hello" =~ ~r/.*hello/
     iex> "123hello456" =~ ~r/.*hello.*/
+
+Character classes
+
+| Class       | Description   |
+| ----------- | ------------- |
+| `.`         | any character |
+
+Quantifiers
+
+| Quantifier  | Description  |
+| ----------- | -------------|
+| `*`         | zero or more |
+| `+`         | one or more  |
+| `?`         | zero or one  |
+
+Begin and end of a string
+
+    ^ - begin
+    $ - end
+
+A greedy and an ungreedy (lazy) mode
+
+    ? - an ungreedy (lazy) mode after a quantifier
+    U - an ungreedy (lazy) modifier
+
+    iex> Regex.run(~r/.*:/, "abc:def:")
+    ["abc:def:"]
+
+    iex> Regex.run(~r/.*?:/, "abc:def:")
+    ["abc:"]
+
+    iex> Regex.run(~r/.*:/U, "abc:def:")
+    ["abc:"]
+
+Capture groups
+
+    iex> Regex.run(
+    iex>  ~r/width: (\d*)px, height: (\d*)px/,
+    iex>  "width: 100px, height: 200px",
+    iex>  capture: :all_but_first)
+
+    ["100", "200"]
 
 ### Examples
 
