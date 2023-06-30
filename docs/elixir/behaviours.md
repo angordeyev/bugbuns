@@ -8,7 +8,7 @@ Define behaviour
 
 Terminology:
 
-There is behaviour module which defines an interace and callback module which defines implementation.
+There is a behaviour module which defines an interace and callback module which defines implementation.
 `@callback` defines callback functions which should be implemented in a callback module.
 
 Implementation
