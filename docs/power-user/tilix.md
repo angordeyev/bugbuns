@@ -8,7 +8,7 @@ Got to Profile > Setting > Advanced > Custom Links
 
 Add regex
 
-    ([a-zA-Z0-9/_-.\ ]+.?[a-zA-Z0-9]+):([0-9]+)
+    ([a-zA-Z0-9\/\_\-\.]+.*[/]+.*:\d*)
 
 ## Resources
 
