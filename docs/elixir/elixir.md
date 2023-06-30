@@ -2,6 +2,11 @@
 
 Elixir as Constructor
 
+## Getting Help
+
+* [hexdocs.pm](https://hexdocs.pm/)
+* `iex> h`
+
 ## use, import, require, alias
 
 ### Alias

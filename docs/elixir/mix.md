@@ -3,15 +3,17 @@
 Mix is a build tool that provides tasks for creating, compiling, and testing
 Elixir projects. Mix unit is called "task".
 
-## Getting help
+## Getting Help
 
 Print tasks and their description
 
-    ➜  mix help
+    mix help
+
+Go to [hexdocs.pm](https://hexdocs.pm) and search for `mix` or open [hexdocs.pm/mix/Mix.html](https://hexdocs.pm/mix/Mix.html) for the web docs.
 
 Get help for the task
 
-    ➜  mix help phx.new
+    mix help phx.new
 
 ## Working with mix Archives
 
@@ -19,43 +21,43 @@ Get help for the task
 
 List archives
 
-    ➜ mix archive
+    mix archive
 
 Install hex archive
 
-    ➜ mix archive.install hex <package>
-    ➜ mix archive.install hex <package> <version>
+    mix archive.install hex <package>
+    mix archive.install hex <package> <version>
 
 Install local archive
 
-    ➜ mix archive.install archive.ez
-    ➜ mix archive.install path/to/archive.ez
+    mix archive.install archive.ez
+    mix archive.install path/to/archive.ez
 
 Install GitHub archive
 
-    ➜ mix archive.install git https://path/to/git/repo
-    ➜ mix archive.install git https://path/to/git/repo branch git_branch
+    mix archive.install git https://path/to/git/repo
+    mix archive.install git https://path/to/git/repo branch git_branch
 
 Uninstall archive
 
-    ➜ mix archive.uninstall <package>
+    mix archive.uninstall <package>
 
 ### Examples
 
-    ➜ mix archive.install hex phx_new
+    mix archive.install hex phx_new
 
-    ➜ mix archive
+    mix archive
     * hex-1.0.1
     * phx_new-1.6.11
 
-    ➜ mix archive.uninstall phx_new
+    mix archive.uninstall phx_new
 
-    ➜ mix archive
+    mix archive
     * hex-1.0.1
 
-    ➜ mix archive.install hex phx_new
+    mix archive.install hex phx_new
 
-    ➜ mix archive
+    mix archive
     * hex-1.0.1
     * phx_new-1.6.11
 
@@ -65,7 +67,7 @@ Uninstall archive
 
 Generate a new project
 
-    ➜ mix new custom_mix_task
+    mix new custom_mix_task
 
 Create a mix task at `mix/tasks/hello.ex`
 
@@ -79,7 +81,7 @@ Create a mix task at `mix/tasks/hello.ex`
 
 Run mix task
 
-    ➜ mix hello World
+    mix hello World
     Hello World
 
 To run application add to the mix task
@@ -94,7 +96,7 @@ To run application add to the mix task
 
 Create a new project
 
-    ➜ mix new hello_build
+    mix new hello_build
 
 Create a mix task at `mix/tasks/hello.ex`
 
@@ -108,29 +110,29 @@ Create a mix task at `mix/tasks/hello.ex`
 
 Build archive
 
-    ➜ mix archive.build
+    mix archive.build
 
 `hello_build-0.1.0.ez` file will be created in the project directory (.ez is zip archive)
 
 Install archive
 
-    ➜ mix archive.install hello_build-0.1.0.ez
+    mix archive.install hello_build-0.1.0.ez
 
 Check if archive is installed
 
-    ➜ mix archive
+    mix archive
     ...
     * hello_build-0.1.0
     ...
 
 Test archive
 
-    ➜ mix hello World
+    mix hello World
     Hello World
 
 Uninstall archive
 
-    ➜ mix archive.uninstall hello_build-0.1.0
+    mix archive.uninstall hello_build-0.1.0
 
 ## mix.exs
 
