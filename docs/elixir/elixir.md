@@ -4,8 +4,28 @@ Elixir as Constructor
 
 ## Getting Help
 
-* [hexdocs.pm](https://hexdocs.pm/)
-* `iex> h`
+### Search using Google
+
+Examples: "hexdocs Application", "hexdocs Supervisor", "hexdocs DateTime", "hexdocs Repo", "hexdocs join".
+
+### [hexdocs.pm](https://hexdocs.pm/)
+
+Search for: "IEx", "Mix", "Elixir", "Phoenix".
+
+Go to:
+
+* [hexdocs.pm/iex](https://hexdocs.pm/iex)
+* [hexdocs.pm/mix](https://hexdocs.pm/mix)
+* [hexdocs.pm/elixir](https://hexdocs.pm/elixir)
+* [hexdocs.pm/phoenix](https://hexdocs.pm/phoenix)
+
+Then search for modules and function names.
+
+### `iex>`
+
+`iex> h Enum`
+`iex> h Enum.map`
+`iex> t Enum`
 
 ## use, import, require, alias
 
@@ -61,66 +81,6 @@ Require to use macro
     require Integer
 
     Integer.is_odd(1)
-
-## Application
-
-The application is defined in `./mix.exs` file
-
-    defmodule Example.MixProject do
-      use Mix.Project
-
-      def project do
-        [
-          app: :example,
-          version: "1.2.3",
-          ...
-        ]
-      end
-
-      def application do
-          [mod: {Example.Application, []}, extra_applications: [:logger]]
-      end
-      ...
-    end
-
-Then it is converted to `_build/dev/lib/example/ebin/example.app`
-
-    {application,example,
-        [{compile_env,[{example,['Elixir.HelloPhoenixWeb.Gettext'],error}]},
-         {applications,
-             [kernel,stdlib,elixir,logger]},
-         {description,"example"},
-         {modules,
-             ['Elixir.Example',
-              'Elixir.Example.Application',
-              ....
-              'Elixir.Example.Repo']},
-         {registered,[]},
-         {vsn,"1.2.3"},
-         {mod,{'Elixir.Example.Application',[]}}]}.
-
-
-The application module `./lib/example/application.ex`
-
-    defmodule Example.Application do
-
-      use Application
-
-      @impl true
-      def start(_type, _args) do
-        children = [
-          ClusterExample.Repo,
-          ClusterExampleWeb.Endpoint
-        ]
-        opts = [strategy: :one_for_one, name: ClusterExample.Supervisor]
-        Supervisor.start_link(children, opts)
-      end
-    end
-
-### extra_applications
-
-Required to start applications which are part of Elixir ditribution.
-Other applications are started automatically
 
 ## Data types
 

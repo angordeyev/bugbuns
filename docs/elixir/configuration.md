@@ -15,6 +15,7 @@ are generate for a newly create Phoenix project:
 
 Configs are done on the application scope
 
+    # config.exs
     config :hello_config,
       key1: "value1",
       key2: "value2"
@@ -23,6 +24,7 @@ Configs are done on the application scope
 
 Config value can be overwritten
 
+    # dev.exs
     config :hello_config,
       key2: "value_override",
       key5: "value5"
