@@ -52,6 +52,14 @@ Push to the repository
 
     ➜ docker push <repository_path>
 
+Run a command using an image
+
+    ➜ docker run alpine echo "hello"
+
+Run multiple commands using an image
+
+    ➜ docker run alpine echo "hello" && echo "world"
+
 ## Containers
 
 List containers
