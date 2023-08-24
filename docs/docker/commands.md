@@ -16,9 +16,9 @@ Login
 
     ➜ docker login -u <dockerhub_user>
 
-Clean disk space used by docker
+Clean disk space used by docker, it will delete volumes data
 
-    ➜ docker system prune
+    ➜ docker system prune -a --volumes
 
 ## Images
 
@@ -111,6 +111,10 @@ Run container with a mounted volume
 Inspect volume
 
     ➜ docker volume inspect <volume_name>
+
+Remove all volumes
+
+    ➜ docker volume prune
 
 ## Command Aliases
 
