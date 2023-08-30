@@ -61,6 +61,12 @@ Uninstall archive
     * hex-1.0.1
     * phx_new-1.6.11
 
+## Tasks
+
+### Remove Unused Dependencies
+
+    mix deps.clean --unlock --unused
+
 ## Custom mix Task
 
 [Elixir School - Custom Mix Tasks](https://elixirschool.com/en/lessons/intermediate/mix_tasks)
