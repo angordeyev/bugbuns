@@ -1,5 +1,17 @@
 # Performance
 
+## Measure Execution time
+
+Measure time in microseconds:
+
+```elixir
+:timer.tc(fn -> :timer.sleep(1000) end, [])
+```
+
+```output
+{1000801, :ok}
+```
+
 ## Faster boot time
 
 ```cmd
