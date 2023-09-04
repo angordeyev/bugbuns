@@ -18,7 +18,7 @@
 
 [Docker Without Docker](https://fly.io/blog/docker-without-docker/)
 
-## Links
+## Resources
 
 [Firecracker: start a VM in less than a second. Julia Evans.](https://jvns.ca/blog/2021/01/23/firecracker--start-a-vm-in-less-than-a-second/)
 [Run Firecracker on DigitalOcean](https://kruzenshtern.org/run-firecracker-on-digitalocean/)
