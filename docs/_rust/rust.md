@@ -1,5 +1,9 @@
 # Rust
 
+## Playground
+
+[play.rust-lang.org](https://play.rust-lang.org/)
+
 ## REPL
 
 ### IRust
