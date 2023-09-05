@@ -20,6 +20,8 @@
 
 ## Resources
 
+[Flintlock](https://github.com/weaveworks-liquidmetal/flintlock)
+[Cloud Hypervisor](https://github.com/cloud-hypervisor/cloud-hypervisor)
 [Firecracker: start a VM in less than a second. Julia Evans.](https://jvns.ca/blog/2021/01/23/firecracker--start-a-vm-in-less-than-a-second/)
 [Run Firecracker on DigitalOcean](https://kruzenshtern.org/run-firecracker-on-digitalocean/)
 [Official Getting Started Guide](https://github.com/firecracker-microvm/firecracker/blob/main/docs/getting-started.md)

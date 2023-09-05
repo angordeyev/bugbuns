@@ -1,6 +1,6 @@
-## Debugging
+# Debugging
 
-### Inspecting
+## Inspecting
 
     [1, 2, 3]
     |> IO.inspect() # prints [1, 2, 3]
@@ -11,7 +11,7 @@ Using inspect label in pipelines
     |> IO.inspect(label: "before") # prints "before: [1, 2, 3]"
     |> Enum.count() # retuns 3
 
-### Pry
+## Pry
 
 use `IEX.pry`[^2]
 
@@ -25,24 +25,34 @@ In pry mode
 
     pry> IO.puts a # hello
 
-### Breakpoints
+## Breakpoints
 
-### Debug in tests
+## Debug in tests
 
 `mix test` does not work, use `iex -S mix` instead
 
-### Observer
+## Observer
 
     :observer.start
 
-### Tools
+## Messages
+
+Listen to incoming process messages:
+
+```elixir
+:dbg.tracer()
+:dbg.p(self(), :r)
+```
+
+## Tools
 
 [Recon](https://hex.pm/packages/recon)
 
     :recon_trace.calls({Phoenix.Socket.Transport, :check_origin, :return_trace}, 1000)
 
-### Resources
+## Resources
 
+[Debugging & Tracing Elixir Applications. Dimitris Zorbas.](https://zorbash.com/post/debugging-elixir-applications/)
 [Debugging with Tracing in Elixir with recon_trace](https://github.com/kw7oe/livebook-notebooks/blob/main/debugging-with-tracing-in-elixir-with-recon_trace.livemd)
 [Debugging With Tracing in Elixir](https://kaiwern.com/posts/2020/11/02/debugging-with-tracing-in-elixir/#starting-dbg)
 [Debugging techniques in Elixir. Plataformatec.](http://blog.plataformatec.com.br/2016/04/debugging-techniques-in-elixir-lang/)
