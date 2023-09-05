@@ -1,9 +1,13 @@
 # asdf
 
-## Add plugin
+## Add Plugin
 
+```shell
 asdf plugin add <lang>
+```
 
 ## asdf using `sudo`
 
-    sudo -E iex
+```shell
+sudo -E iex
+```
