@@ -2,31 +2,6 @@
 
 Elixir as Constructor
 
-## Getting Help
-
-### Search using Google
-
-Examples: "hexdocs Application", "hexdocs Supervisor", "hexdocs DateTime", "hexdocs Repo", "hexdocs join".
-
-### [hexdocs.pm](https://hexdocs.pm/)
-
-Search for: "IEx", "Mix", "Elixir", "Phoenix".
-
-Go to:
-
-* [hexdocs.pm/iex](https://hexdocs.pm/iex)
-* [hexdocs.pm/mix](https://hexdocs.pm/mix)
-* [hexdocs.pm/elixir](https://hexdocs.pm/elixir)
-* [hexdocs.pm/phoenix](https://hexdocs.pm/phoenix)
-
-Then search for modules and function names.
-
-### `iex>`
-
-`iex> h Enum`
-`iex> h Enum.map`
-`iex> t Enum`
-
 ## use, import, require, alias
 
 ### Alias
