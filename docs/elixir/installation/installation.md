@@ -8,17 +8,22 @@ Install asdf from [asdf-vm.com](https://asdf-vm.com)
 
 Update `~/.bashrc` with `export KERL_BUILD_DOCS=yes` to
 
-Install Plugins
+Install Plugins:
 
     asdf plugin add erlang
     asdf plugin add elixir
 
 ### Install
 
-Install Elixir and Erlang
+List available versions:
 
+    asdf list all erlang
+    asdf list all elixir
+
+Install Elixir and Erlang:
+
+    KERL_BUILD_DOCS=yes KERL_INSTALL_MANPAGES=yes KERL_INSTALL_HTMLDOCS=yes asdf install erlang <version>
     asdf install elixir <version>
-    asdf install erlang <version>
 
 Install Livebook
 
@@ -48,6 +53,13 @@ Examples
     asdf local erlang ref:OTP-19.3-patched; asdf local elixir 1.4.5-otp-19
     asdf local erlang 20.3
     asdf local elixir 1.7.0-otp-20
+
+### Uninstall
+
+```shell
+asdf uninstall erlang <version>
+asdf uninstall elixir <version>
+```
 
 ## Ubuntu 22
 
