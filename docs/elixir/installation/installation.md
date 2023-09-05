@@ -2,12 +2,18 @@
 
 ## asdf
 
-### Install
+### Prerequisites
+
+Install asdf from [asdf-vm.com](https://asdf-vm.com)
+
+Update `~/.bashrc` with `export KERL_BUILD_DOCS=yes` to
 
 Install Plugins
 
     asdf plugin add erlang
     asdf plugin add elixir
+
+### Install
 
 Install Elixir and Erlang
 

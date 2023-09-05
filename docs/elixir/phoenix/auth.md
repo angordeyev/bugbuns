@@ -1,6 +1,6 @@
-### Auth
+# Auth
 
-#### `mix phx.gen.auth`
+## `mix phx.gen.auth`
 
 Generate new project
 

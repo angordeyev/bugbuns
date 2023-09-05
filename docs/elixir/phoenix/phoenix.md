@@ -1,6 +1,6 @@
-## Phoenixs
+# Phoenix
 
-### Creating Application
+## Creating Application
 
 Create application
 
@@ -65,7 +65,7 @@ Add resource to `HelloUsersWeb.Router` in `router.ex`
       resources "/messages", MessageController, except: [:new, :edit]
     end
 
-### Working with curl
+## Working with curl
 
 Insert new message
 
@@ -173,9 +173,9 @@ List messages
       ]
     }
 
-### Working with HTTPoision
+## Working with HTTPoision
 
-#### List
+### List
 
     iex> (HTTPoison.post! "localhost:4000/api/messages",
           Jason.encode!(%{message: %{text: "some_text"}}),
@@ -207,7 +207,7 @@ List messages
 See the status code is 201 and response "location" is "/messages/19",
 so the browser will redirect to that page
 
-#### Delete
+### Delete
 
     iex> HTTPoison.delete! "localhost:4000/api/messages/7"
     %HTTPoison.Response{
@@ -404,7 +404,7 @@ Tests:
 
 [A deep dive into authentication in Elixir Phoenix with phx.gen.auth](https://levelup.gitconnected.com/a-deep-dive-into-authentication-in-elixir-phoenix-with-phx-gen-auth-9686afecf8bd)
 
-## Phoenix naming convension
+## Phoenix Naming Convension
 
 Tests should end with `test` postfix
 
