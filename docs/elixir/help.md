@@ -8,6 +8,11 @@ Examples: "hexdocs Application", "hexdocs Supervisor", "hexdocs DateTime", "hexd
 
 Search for: "IEx", "Mix", "Elixir", "Phoenix".
 
+### Web Pages Using Mix
+
+    mix hex.docs online ecto
+    mix hex.docs online iex
+
 ### Links
 
 * [hexdocs.pm/iex](https://hexdocs.pm/iex)
@@ -31,7 +36,16 @@ Examples: "erlang erlang", "erlang dbg", "erlang gen_server"
 
 ## `iex>`
 
+### Help
+
+`iex> h IEx.Helpers`
 `iex> h Enum`
 `iex> h Enum.map`
 `iex> t Enum`
 `iex> t Map`
+`iex> h :dbg.tracer`
+
+### Sources
+
+`iex> open Enum.map`
+`iex> open :dbg.tracer`
