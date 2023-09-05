@@ -37,7 +37,7 @@ In pry mode
 
 ## Messages
 
-Listen to incoming process messages:
+Listen incoming process messages:
 
 ```elixir
 :dbg.tracer()
