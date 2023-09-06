@@ -1,5 +1,7 @@
 # IEx
 
+## Tips and Tricks
+
 Paste multiline
 
 
@@ -19,6 +21,20 @@ IEx.configure(
       [eval_error: [IO.ANSI.color(5,1,1)],
        stack_info: [IO.ANSI.color(1,2,1)] ]
 )
+```
+
+## Import Dependencies
+
+```elixir
+Mix.install([:table_rex])
+
+rows = [
+  ["11", "12", "13"],
+  ["21", "22", "23"],
+  ["31", "32", "33"]
+]
+
+IO.puts(TableRex.quick_render!(rows))
 ```
 
 ## Resources
