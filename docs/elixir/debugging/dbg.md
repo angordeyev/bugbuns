@@ -53,10 +53,11 @@ Enum.count([1,2,3])
 ```elixir
 :dbg.tracer()
 :dbg.p(self(), :m)
-:dbg.tpe(:send, :x)
 ```
 
 ### Filtered Send Messages
+
+#### Exact Match
 
 ```elixir
 :dbg.tracer()
@@ -80,7 +81,40 @@ send self(), "hello"
 (<0.114.0>) <0.114.0> ! <<"hello">>
 ```
 
+#### Pattern Match
+
+```elixir
+# Install `ex2ms` dependency:
+Mix.install([:ex2ms])
+import Ex2ms
+
+:dbg.tracer()
+:dbg.p(self(), :s)
+filter = fun do [_receiver, {:some_msg_type, _}] = x -> x end
+:dbg.tpe(:send, filter)
+```
+
+```elixir
+pid = spawn(fn -> Process.sleep(:infinity) end)
+send pid, {:another_msg_type, "hello"}
+```
+
+```output
+{:another_msg_type, "hello"}
+```
+
+```elixir
+send pid, {:some_msg_type, "hello"}
+```
+
+```output
+(<0.114.0>) <0.174.0> ! {some_msg_type,<<"hello">>}
+{:some_msg_type, "hello"}
+```
+
 ### Filtered Received Messages
+
+#### Exact Match
 
 ```elixir
 :dbg.tracer()
@@ -102,4 +136,37 @@ send self(), "hello"
 
 ```output
 (<0.114.0>) << <<"hello">>
+```
+
+#### Pattern Match
+
+```elixir
+# Install `ex2ms` dependency:
+Mix.install([:ex2ms])
+import Ex2ms
+
+:dbg.tracer()
+:dbg.p(self(), :r)
+filter = fun do [_node, _sender, {:some_msg_type, _}] = x -> x end
+:dbg.tpe(:receive, filter)
+```
+
+```elixir
+pid = self()
+spawn(fn -> send pid, {:another_msg_type, "hello"} end)
+```
+
+```output
+#PID<0.178.0>
+
+```
+
+```elixir
+pid = self()
+spawn(fn -> send pid, {:some_msg_type, "hello"} end)
+```
+
+```output
+#PID<0.179.0>
+(<0.114.0>) << {some_msg_type,<<"hello">>}
 ```
