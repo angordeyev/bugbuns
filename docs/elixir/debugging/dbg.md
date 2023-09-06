@@ -112,6 +112,30 @@ send pid, {:some_msg_type, "hello"}
 {:some_msg_type, "hello"}
 ```
 
+#### Send to the Current Process
+
+```elixir
+# Install `ex2ms` dependency:
+Mix.install([:ex2ms])
+import Ex2ms
+
+:dbg.tracer()
+# Trace new processes
+:dbg.p(:new, :s)
+pid = self()
+filter = fun do [pid, _] = x when pid == ^pid -> x end
+:dbg.tpe(:send, filter)
+```
+
+```elixir
+spawn fn -> send(pid, "hello") end
+```
+
+```output
+#PID<0.174.0>
+(<0.174.0>) <0.114.0> ! <<"hello">>
+```
+
 ### Filtered Received Messages
 
 #### Exact Match
