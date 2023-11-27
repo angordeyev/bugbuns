@@ -56,3 +56,7 @@ Describe can be used as tag to filter tests to run
 Or to list tests, filtered tests will be shown in green text
 
     ➜ mix test --trace --only describe:"described test"
+
+### Print Slowest Tests
+
+    ➜ mix test --slowest <n>

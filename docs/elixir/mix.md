@@ -75,7 +75,7 @@ Generate a new project
 
     mix new custom_mix_task
 
-Create a mix task at `mix/tasks/hello.ex`
+Create a Mix task at `lib/mix/tasks/hello.ex`
 
     defmodule Mix.Tasks.Hello do
       use Mix.Task
@@ -85,7 +85,7 @@ Create a mix task at `mix/tasks/hello.ex`
       end
     end
 
-Run mix task
+Run Mix task
 
     mix hello World
     Hello World
@@ -98,13 +98,34 @@ To run application add to the mix task
       ...
     end
 
+### Debugging Mix Tasks
+
+To debug a custom Mix task use can use `require IEx; IEx.pry()`:
+
+    defmodule Mix.Tasks.Hello do
+      use Mix.Task
+
+      def run(param) do
+        require IEx; IEx.pry()
+        IO.puts("Hello #{param}")
+      end
+    end
+
+Then run a task (for Erlang 26 and later):
+
+    mix hello
+
+Then run a task (for Erlang 25 and older):
+
+    iex -S mix hello
+
 ## Creating own Mix Archives
 
 Create a new project
 
     mix new hello_build
 
-Create a mix task at `mix/tasks/hello.ex`
+Create a Mix task at `mix/tasks/hello.ex`
 
     defmodule Mix.Tasks.Hello do
       use Mix.Task

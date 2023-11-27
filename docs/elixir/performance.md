@@ -5,7 +5,9 @@
 Measure time in microseconds:
 
 ```elixir
-:timer.tc(fn -> :timer.sleep(1000) end, [])
+:timer.tc(fn ->
+  :timer.sleep(1000)
+end)
 ```
 
 ```output

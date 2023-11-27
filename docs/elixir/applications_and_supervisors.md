@@ -38,7 +38,7 @@ Then it is converted to `_build/dev/lib/example/ebin/example.app`
          {mod,{'Elixir.Example.Application',[]}}]}.
 
 
-The application module `./lib/example/application.ex`
+The application module is `./lib/example/application.ex`
 
     defmodule Example.Application do
 
@@ -70,7 +70,7 @@ Edit `mix.exs`
       ]
     end
 
-Create module implementing `start/2`
+Create a module implementing `start/2`
 
     defmodule HelloApp do
       def start(_type, _args) do
@@ -79,5 +79,4 @@ Create module implementing `start/2`
       end
     end
 
-`type` is :normal unless started in a distributed environment, it can have :normal, :takeover :failover
-values in a distributed environment.
+`type` is :normal unless started in a distributed environment, it can have `:normal`, `:takeover`, `:failover` values in a distributed environment.

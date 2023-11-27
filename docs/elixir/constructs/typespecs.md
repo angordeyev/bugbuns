@@ -1,6 +1,6 @@
-## Typespecs
+# Typespecs
 
-Typespecs attributes:
+## Typespecs attributes
 
 - `@type`
 - `@opaque`
@@ -9,7 +9,9 @@ Typespecs attributes:
 - `@callback`
 - `@macrocallback`
 
-To list built-in types
+## Using IEx
+
+To list the built-in types:
 
     iex> t :erlang # list all types
 
@@ -24,7 +26,7 @@ To list built-in types
     iex> t :erlang.pos_integer
     @type pos_integer() :: pos_integer()
 
-List types defined in module
+List types defined in a module:
 
     iex> t String
     @type codepoint() :: t()
@@ -35,7 +37,7 @@ List types defined in module
 
     @type t() :: binary()
 
-Show one type information
+Show a type information:
 
     iex> t String.t
     @type t() :: binary()
@@ -45,6 +47,55 @@ Show one type information
     The types String.t() and binary() are equivalent to analysis tools. Although,
     for those reading the documentation, String.t() implies it is a UTF-8 encoded
     binary.
+
+## Check Typescpecs
+
+Required dependences:
+
+```elixir
+{:dialyxir, "~> 1.4"}
+```
+
+Check with dializer:
+
+```shell
+mix dialyzer
+```
+
+The example:
+
+```elixir
+defmodule HelloTypespecs do
+  def work do
+    try do
+      sum("a", "b")
+    rescue _e ->
+      :ok
+    end
+  end
+
+
+  @spec sum(integer, integer) :: integer
+  def sum(_a, _b) do
+    1
+  end
+end
+```
+
+```shell
+mix dialyzer
+```
+```output
+lib/hello_typespecs.ex:4:call
+The function call will not succeed.
+
+HelloTypespecs.sum(<<97>>, <<98>>)
+
+breaks the contract
+(integer(), integer()) :: integer()
+```
+
+## Defining Typespecs
 
 Using
 
@@ -62,35 +113,6 @@ Using
     iex> h Math.sum
     def sum(a, b)
     @spec sum(integer(), integer()) :: integer()
-
-Specs will be checked with Dializer `mix dialyzer`
-
-    defmodule Hello do
-      def work do
-        Math.sum("a", "b")
-      end
-    end
-
-    defmodule Math do
-      @spec sum(integer, integer) :: integer
-      def sum(a, b) do
-        "some string"
-      end
-    end
-
-    $ mix dialyzer
-    _____________________________________________________________________________________
-    Error: The function call will not succeed.
-    Math.sum(<<97>>, <<98>>)
-    will never return since the 1st and 2nd arguments differ
-    from the success typing arguments:
-    _____________________________________________________________________________________
-    Error: invalid_contract
-    The @spec for the function does not match the success typing of the function.
-    Function: Math.sum/2
-    Success typing:
-    @spec sum(integer(), integer()) :: binary()
-    _____________________________________________________________________________________
 
 Defining own types
 
@@ -116,3 +138,53 @@ Type docs
     iex> t A.word # show type with docs
     @type word() :: String.t()
     Single word
+
+## Examples
+
+### Simple
+
+```elixir
+defmodule Atom do
+  ...
+  @spec to_string(atom) :: String.t()
+  def to_string(atom) do
+      :erlang.atom_to_binary(atom)
+  end
+  ...
+end
+```
+
+### Single Spec for a Function with Multiple Matches
+
+```elixir
+...
+defmodule Enum do
+  @spec join(t, binary()) :: binary()
+  def join(enumerable, joiner \\ "")
+
+  def join(enumerable, "") do
+    ...
+  end
+
+  def join(enumerable, joiner) when is_binary(joiner) do
+    ...
+  end
+end
+```
+
+### Overloaded function
+
+### Cases
+
+#### `String.t()` or `binary()`
+
+Strint.t() is UTF8 encoded binary
+
+> The types `String.t()` and `binary()` are equivalent to analysis tools.
+> Although, for those reading the documentation, `String.t()` implies
+> it is a UTF-8 encoded binary.
+>
+> -- <cite>[String.t(). Elixir Docs.](https://hexdocs.pm/elixir/String.html#t:t/0)</cite>
+## Resouces
+
+[Typespecs. Elixir Docs.](https://hexdocs.pm/elixir/1.15.7/typespecs.html)

@@ -23,6 +23,12 @@ IEx.configure(
 )
 ```
 
+## Using Mix
+
+```elixir
+ iex> h Mix
+ ```
+
 ## Import Dependencies
 
 ```elixir

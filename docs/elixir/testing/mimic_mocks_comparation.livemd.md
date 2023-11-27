@@ -1,4 +1,4 @@
-# Mimics And Mock comparation
+# Mimic And Mock comparation
 
 ```elixir
 Mix.install([
