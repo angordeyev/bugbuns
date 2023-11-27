@@ -33,3 +33,7 @@ Create an empty file system:
 ```shell
 mkfs.ext4 rootfs.ext4
 ```
+
+## Firecracker
+
+Download Firecracker from [the release page](https://github.com/firecracker-microvm/firecracker/releases)
