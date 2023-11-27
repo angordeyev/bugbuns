@@ -29,9 +29,9 @@ Attach shell to running container, first characters of container ID can be used
 
     ➜ docker exec -it <container_name_or_id> bash
 
-Stop container 
+Stop a container
 
-    ➜ docker stop <container_name>
+    ➜ docker stop <container_name_or_id>
 
 And see that the container is no longer running
 
