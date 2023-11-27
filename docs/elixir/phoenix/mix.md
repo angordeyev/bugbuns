@@ -4,12 +4,18 @@
 
 Install or upgrade mix tasks to the newest version
 
-    mix archive.install hex phx_new
+```shell
+mix archive.install hex phx_new
+```
 
 Check mix tasks the version
 
-    mix phx.new -v
+```shell
+mix phx.new -v
+```
 
 ## Creating Aplications
 
-    mix phx.new <application_name>
+```shell
+mix phx.new <application_name>
+```

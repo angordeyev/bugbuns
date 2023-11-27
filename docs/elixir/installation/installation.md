@@ -10,49 +10,65 @@ Update `~/.bashrc` with `export KERL_BUILD_DOCS=yes` to
 
 Install Plugins:
 
-    asdf plugin add erlang
-    asdf plugin add elixir
+```shell
+asdf plugin add erlang
+asdf plugin add elixir
+```
 
 ### Install
 
 List available versions:
 
-    asdf list all erlang
-    asdf list all elixir
+```shell
+asdf list all erlang
+asdf list all elixir
+```
 
 Install Elixir and Erlang:
 
-    KERL_BUILD_DOCS=yes KERL_INSTALL_MANPAGES=yes KERL_INSTALL_HTMLDOCS=yes asdf install erlang <version>
-    asdf install elixir <version>
+```shell
+KERL_BUILD_DOCS=yes KERL_INSTALL_MANPAGES=yes KERL_INSTALL_HTMLDOCS=yes asdf install erlang <version>
+asdf install elixir <version>
+```
 
 Install Livebook
 
-    mix escript.install hex livebook
-    asdf reshim
+```shell
+mix escript.install hex livebook
+asdf reshim
+```
 
 ### List All Available Versions
 
-    asdf list all erlang
-    asdf list all elixir
+```shell
+asdf list all erlang
+asdf list all elixir
+```
 
 ### Set Global Default Versions
 
-    asdf global erlang 25.1.2
-    asdf global elixir 1.14
+```shell
+asdf global erlang 25.1.2
+asdf global elixir 1.14
+```
 
 ### Show Default Global Verions
 
-    asdf current
+```shell
+asdf current
+```
 
 ### Setting asdf version of Elixir and Erlang OTP
 
 [Elixir School - Agnostic Version Management With asdf](https://elixirschool.com/blog/asdf-version-management/)
 
-Examples
+Examples:
 
-    asdf local erlang ref:OTP-19.3-patched; asdf local elixir 1.4.5-otp-19
-    asdf local erlang 20.3
-    asdf local elixir 1.7.0-otp-20
+```shell
+asdf local erlang ref:OTP-19.3-patched; asdf local elixir 1.4.5-otp-19
+asdf local erlang 20.3
+asdf local elixir 1.7.0-otp-20
+```
 
 ### Uninstall
 
@@ -67,57 +83,67 @@ asdf uninstall elixir <version>
 
 Unattanded security updates  are enable by default in Ubuntu.
 
-To create build and run projects
+To create a build and run projects:
 
-    sudo apt update && sudo apt upgrade
+```shell
+sudo apt update && sudo apt upgrade
 
-    # install PostgreSQL
-    sudo apt install postgresql
-    sudo -u postgres psql
-    postgres=# \password postgres
-    postgres=# exit
+# install PostgreSQL
+sudo apt install postgresql
+sudo -u postgres psql
+postgres=# \password postgres
+postgres=# exit
 
-    sudo apt install erlang
-    sudo apt install elixir
+sudo apt install erlang
+sudo apt install elixir
 
-    sudo apt install inotify-tools
+sudo apt install inotify-tools
+```
 
-Create new project
+Create a new project:
 
-    mix archive.install hex phx_new
-    # Could not find Hex, which is needed to build dependency :phx_new
-    # Shall I install Hex? (if running non-interactively, use "mix local.hex --force") [Yn]
+```shell
+mix archive.install hex phx_new
+# Could not find Hex, which is needed to build dependency :phx_new
+# Shall I install Hex? (if running non-interactively, use "mix local.hex --force") [Yn]
 
-    y # agree to install Hex
+y # agree to install Hex
 
-    mix phx.new hello_phx
+mix phx.new hello_phx
 
-    mix setup
-    # Could not find "rebar3", which is needed to build dependency :ranch
-    # I can install a local copy which is just used by Mix
-    # Shall I install rebar3? (if running non-interactively, use "mix local.rebar --force") [Yn]
+mix setup
+# Could not find "rebar3", which is needed to build dependency :ranch
+# I can install a local copy which is just used by Mix
+# Shall I install rebar3? (if running non-interactively, use "mix local.rebar --force") [Yn]
 
-    y # agree to install rebar3
+y # agree to install rebar3
+```
 
-Prepare release
+Prepare a release:
 
-    mix phx.gen.release
-    MIX_ENV=prod mix release
+```shell
+mix phx.gen.release
+MIX_ENV=prod mix release
 
-    mix phx.gen.secret
-    export SECRET_KEY_BASE=<SECRET>
-    export DATABASE_URL=ecto://postgres:postgres@localhost/hello_phx
+mix phx.gen.secret
+export SECRET_KEY_BASE=<SECRET>
+export DATABASE_URL=ecto://postgres:postgres@localhost/hello_phx
 
-    MIX_ENV=prod mix ecto.setup
+MIX_ENV=prod mix ecto.setup
+```
 
-Generate release
+Generate a release:
 
-    MIX_ENV=prod mix assets.deploy
-    MIX_ENV=prod mix release
+```shell
+MIX_ENV=prod mix assets.deploy
+MIX_ENV=prod mix release
+```
 
-Run release
+Run a release:
 
-    _build/prod/rel/hello_phx/bin/server
+```shell
+_build/prod/rel/hello_phx/bin/server
+```
 
 Access release in a browser at `server_ip_address:4000`
 
@@ -125,19 +151,21 @@ Access release in a browser at `server_ip_address:4000`
 
 #### Initial Setup
 
-    sudo apt update && sudo apt upgrade
+```shell
+sudo apt update && sudo apt upgrade
 
-    sudo useradd webapp
-    sudo mkdir /srv/webapps
-    sudo chown webapp:webapp /srv/webapps
+sudo useradd webapp
+sudo mkdir /srv/webapps
+sudo chown webapp:webapp /srv/webapps
 
-    # install PostgreSQL
-    sudo apt install postgresql
+# install PostgreSQL
+sudo apt install postgresql
 
-    # set postgres password
-    sudo -u postgres psql
-    postgres=# \password postgres
-    postgres=# \q
+# set postgres password
+sudo -u postgres psql
+postgres=# \password postgres
+postgres=# \q
+```
 
 ## Installing Using Nix
 

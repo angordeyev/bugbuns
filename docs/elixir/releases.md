@@ -2,86 +2,108 @@
 
 ## Phoenix releases
 
-Generate release helper files for Phoenix
+Generate release helper files for Phoenix:
 
-    ➜ mix phx.gen.release
-    ➜ MIX_ENV=prod mix release
+```shell
+mix phx.gen.release
+MIX_ENV=prod mix release
+```
 
 ## Deploy release
 
-Create database
+Create a database:
 
-    ➜ sudo -u postgres psql -c 'create database hello_phx;' # create db
+```shell
+sudo -u postgres psql -c 'create database hello_phx;' # create db
+```
 
-Generate secret
+Generate a secret:
 
-    ➜ mix phx.gen.secret # on other machine because mix does not exist here
+```shell
+mix phx.gen.secret # on other machine because mix does not exist here
+```
 
-Create unit file
+Create a unit file:
 
-    ➜ sudo touch /etc/systemd/system/<appname>.service
-    ➜ sudo chmod 644 /etc/systemd/system/<appname>.service
+```shell
+sudo touch /etc/systemd/system/<appname>.service
+sudo chmod 644 /etc/systemd/system/<appname>.service
+```
 
-    [Unit]
-    Description=<appname>
-    # after file systems are mounted and network is available
-    After=local-fs.target network.target
+```ini
+[Unit]
+Description=<appname>
+# after file systems are mounted and network is available
+After=local-fs.target network.target
 
-    [Service]
-    User=webapp
-    Group=webapp
+[Service]
+User=webapp
+Group=webapp
 
-    # cd to the folder
-    WorkingDirectory=/srv/<appname>
-    ExecStart=/srv/<appname>/bin/server
-    ExecStop=/srv/<appname>/bin/<appname> stop
+# cd to the folder
+WorkingDirectory=/srv/<appname>
+ExecStart=/srv/<appname>/bin/server
+ExecStop=/srv/<appname>/bin/<appname> stop
 
-    # mask for default files permissions create by daemon
-    UMask=027
+# mask for default files permissions create by daemon
+UMask=027
 
-    # the service will be restarted regardless of whether it exited cleanly or not
-    Restart=always
+# the service will be restarted regardless of whether it exited cleanly or not
+Restart=always
 
-    Environment=MIX_ENV=prod
-    Environment=PORT=4001
-    Environment=DATABASE_URL=ecto://postgres:postgres@localhost/<appname>
-    # generate SECRET using "mix phx.gen.secret"
-    Environment=SECRET_KEY_BASE=<SECRET>
+Environment=MIX_ENV=prod
+Environment=PORT=4001
+Environment=DATABASE_URL=ecto://postgres:postgres@localhost/<appname>
+# generate SECRET using "mix phx.gen.secret"
+Environment=SECRET_KEY_BASE=<SECRET>
 
-    [Install]
-    # common for services, starts the service when systemd loads multi-user.target
-    WantedBy=multi-user.target
+[Install]
+# common for services, starts the service when systemd loads multi-user.target
+WantedBy=multi-user.target
+```
 
 ## Environment variables
 
-    ➜ API_KEY="some_secret" iex
+```shell
+API_KEY="some_secret" iex
+```
 
-    iex> System.fetch_env!("API_KEY")
-    "some_secret"
+```elixir
+iex> System.fetch_env!("API_KEY")
+```
+```output
+"some_secret"
+```
 
 ## Overlays
 
-Files in rel/overlays are copied to the release after it is build
+Files in rel/overlays are copied to the release after it is build:
 
-    ➜ mkdir -p rel/overlays; touch rel/overlays/hello_overlay.txt
-    ➜ mix release
+```shell
+mkdir -p rel/overlays; touch rel/overlays/hello_overlay.txt
+mix release
+```
 
 See `_build/dev/rel/hello_release/hello_overlay.txt` is created
 
 ## Diagnostics and docs
 
-Show default unit file paramsters
+Show default unit file parameters:
 
-    systemctl --user show syncthing | grep LimitNOFILE
+```shell
+systemctl --user show syncthing | grep LimitNOFILE
+```
 
 ### Access from other machines or web
 
-Change binding to {0, 0, 0, 0}
+Change binding to `{0, 0, 0, 0}`:
 
-    config :hello_phx, HelloPhxWeb.Endpoint,
-      ...
-      http: [ip: {0, 0, 0, 0}, port: 4000],
-      ...
+```elixir
+config :hello_phx, HelloPhxWeb.Endpoint,
+  ...
+  http: [ip: {0, 0, 0, 0}, port: 4000],
+  ...
+```
 
 ## Cross compiling
 

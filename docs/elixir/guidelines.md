@@ -11,208 +11,211 @@ Use snakecase
 
 ## Example
 
-    # One space after after "#" is used in comments.
-    # Comments longer than a word are capitalized, and sentences use punctuation.
-    # Modules use Camel case and keep acronyms (snake case does
-    # not save acronyms, e.g. "parse_html").
-    defmodule MyModuleHTML do
-      @moduledoc """
-      An example module.
-      Blank line after module documentation.
-      """
+```elixir
 
-      @behaviour MyBehaviour
+# One space after after "#" is used in comments.
+# Comments longer than a word are capitalized, and sentences use punctuation.
+# Modules use Camel case and keep acronyms (snake case does
+# not save acronyms, e.g. "parse_html").
+defmodule MyModuleHTML do
+  @moduledoc """
+  An example module.
+  Blank line after module documentation.
+  """
 
-      use GenServer
+  @behaviour MyBehaviour
 
-      import Something
-      import SomethingElse
+  use GenServer
 
-      require Integer
+  import Something
+  import SomethingElse
 
-      alias My.Long.Module.Name
-      alias My.Other.Module.Example
+  require Integer
 
-      @module_attribute :foo
-      @other_attribute 100
+  alias My.Long.Module.Name
+  alias My.Other.Module.Example
 
-      defstruct [:name, params: []]
+  @module_attribute :foo
+  @other_attribute 100
 
-      @type params :: [{binary, binary}]
+  defstruct [:name, params: []]
 
-      @callback some_function(term) :: :ok | {:error, term}
+  @type params :: [{binary, binary}]
 
-      @macrocallback macro_name(term) :: Macro.t()
+  @callback some_function(term) :: :ok | {:error, term}
 
-      @optional_callbacks macro_name: 1
+  @macrocallback macro_name(term) :: Macro.t()
 
-      @doc false
-      defmacro __using__(_opts), do: :no_op
+  @optional_callbacks macro_name: 1
 
-      @doc """
-      Determines when a term is `:ok`. Allowed in guards.
-      """
-      defguard is_ok(term) when term == :ok
+  @doc false
+  defmacro __using__(_opts), do: :no_op
 
-      @impl true
-      def init(state), do: {:ok, state}
+  @doc """
+  Determines when a term is `:ok`. Allowed in guards.
+  """
+  defguard is_ok(term) when term == :ok
 
-      # Define other functions here.
-      # Use blank lines even for overloaded functions
-      # Group one line functions without blank line
+  @impl true
+  def init(state), do: {:ok, state}
 
-      # Omit parentheses when there are no function arguments
-      def some_overloaded_function, do: :ok
-      def some_overloaded_function(1), do: 1
+  # Define other functions here.
+  # Use blank lines even for overloaded functions
+  # Group one line functions without blank line
 
-      # blank line before function, multiline function,
-      # same as def..end function
-      def some_overloaded_function(_),
-        do: :very_long_line_here
+  # Omit parentheses when there are no function arguments
+  def some_overloaded_function, do: :ok
+  def some_overloaded_function(1), do: 1
 
-      # opts is the name for options parameters
-      def some_overloaded_function(:ok, opts \\ :default_value) do
-        # Blank line before and after multiline assignment
-        some_var = 1
+  # blank line before function, multiline function,
+  # same as def..end function
+  def some_overloaded_function(_),
+    do: :very_long_line_here
 
-        something =
-          if x == some_var do
-            "Hi"
-          else
-            "Bye"
-          end
+  # opts is the name for options parameters
+  def some_overloaded_function(:ok, opts \\ :default_value) do
+    # Blank line before and after multiline assignment
+    some_var = 1
 
-        String.downcase(something)
-
-        # Place begining and "end)" with the same indentation
-        spawn(fn ->
-          Logger.debug("three")
-          send(test, :done)
-        end)
+    something =
+      if x == some_var do
+        "Hi"
+      else
+        "Bye"
       end
 
-      @doc """
-      Docs are written for a first overloaded function.
-      """
-      def some_overloaded_function(some_string) do
-        # Blank line between each of case statement
-        case arg do
-          true ->
-            # comments above, not after line
-            IO.puts("ok")
-            :ok
+    String.downcase(something)
 
-          false ->
-            :error
-        end
+    # Place begining and "end)" with the same indentation
+    spawn(fn ->
+      Logger.debug("three")
+      send(test, :done)
+    end)
+  end
 
-        # Blank line between commented one line statements
+  @doc """
+  Docs are written for a first overloaded function.
+  """
+  def some_overloaded_function(some_string) do
+    # Blank line between each of case statement
+    case arg do
+      true ->
+        # comments above, not after line
+        IO.puts("ok")
+        :ok
 
-        # Some comment
-        a = 1
-
-        # Another comment
-        b = 1
-
-        # Pipeline, lines are not indented
-        some_string
-        |> String.downcase()
-        |> String.trim()
-
-        # Assignment and pipeline
-        some_result =
-          some_string
-          |> String.downcase()
-          |> String.trim()
-
-        # Heredoc, leading spaces are removed according to the last """
-        text = """
-        some
-        text
-        """
-
-        assert text == """
-               some
-               text
-               """
-      end
-
-      # acronym in lower case in snake case
-      def parse_json(text) do
-        ..
-        some_fun = fun x ->
-          ...
-        end
-
-      end
-
-      def multiline_lists_and_tuples do
-        # list assignment
-        list = [
-          :first_item,
-          :second_item
-        ]
-
-        # tuple assignment
-        tuple = {
-          :first_item,
-          :second_item
-        }
-
-        # return list
-        [
-          :first_item,
-          :second_item,
-          :next_item,
-          :final_item
-        ]
-
-        # return tuple
-        {
-          :first_item,
-          :second_item,
-          :next_item,
-          :final_item
-        }
-      end
-
-      def multiline_maps do
-        # map assignment
-        map = %{
-          "first_key" => "first_value",
-          "second_key" => "second_value"
-        }
-
-        # return map
-        %{
-          "first_key" => "first_value",
-          "second_key" => "second_value"
-        }
-      end
-
-      def function_with_long_parameters(%{
-            label: {GenServer, :no_handle_info},
-            report: %{module: mod, message: msg, name: proc}
-          }) do
-        {'~p ~p received unexpected message in handle_info/2: ~p~n', [mod, proc, msg]}
-      end
-
-      def pattern_matching_function([:foo, :bar, :baz] = params),
-        do: Enum.map(args, fn arg -> arg <> " is on a very long line!" end)
+      false ->
+        :error
     end
 
-    # no blank line after defmodule and before end
-    defmodule A do
-      def f, do: :ok
-    end
+    # Blank line between commented one line statements
 
-<!---->
+    # Some comment
+    a = 1
 
-    defmodule MyModuleHTMLTest do
-      use Simple.DataCase
+    # Another comment
+    b = 1
 
+    # Pipeline, lines are not indented
+    some_string
+    |> String.downcase()
+    |> String.trim()
+
+    # Assignment and pipeline
+    some_result =
+      some_string
+      |> String.downcase()
+      |> String.trim()
+
+    # Heredoc, leading spaces are removed according to the last """
+    text = """
+    some
+    text
+    """
+
+    assert text == """
+           some
+           text
+           """
+  end
+
+  # acronym in lower case in snake case
+  def parse_json(text) do
+    ..
+    some_fun = fun x ->
       ...
     end
+
+  end
+
+  def multiline_lists_and_tuples do
+    # list assignment
+    list = [
+      :first_item,
+      :second_item
+    ]
+
+    # tuple assignment
+    tuple = {
+      :first_item,
+      :second_item
+    }
+
+    # return list
+    [
+      :first_item,
+      :second_item,
+      :next_item,
+      :final_item
+    ]
+
+    # return tuple
+    {
+      :first_item,
+      :second_item,
+      :next_item,
+      :final_item
+    }
+  end
+
+  def multiline_maps do
+    # map assignment
+    map = %{
+      "first_key" => "first_value",
+      "second_key" => "second_value"
+    }
+
+    # return map
+    %{
+      "first_key" => "first_value",
+      "second_key" => "second_value"
+    }
+  end
+
+  def function_with_long_parameters(%{
+        label: {GenServer, :no_handle_info},
+        report: %{module: mod, message: msg, name: proc}
+      }) do
+    {'~p ~p received unexpected message in handle_info/2: ~p~n', [mod, proc, msg]}
+  end
+
+  def pattern_matching_function([:foo, :bar, :baz] = params),
+    do: Enum.map(args, fn arg -> arg <> " is on a very long line!" end)
+end
+
+# no blank line after defmodule and before end
+defmodule A do
+  def f, do: :ok
+end
+```
+
+```elixir
+defmodule MyModuleHTMLTest do
+  use Simple.DataCase
+
+  ...
+end
+```
 
 ## Blank lines
 
@@ -231,39 +234,45 @@ The order in a module:
 
 ## text wrap
 
-    list = [
-      :first_item,
-      :second_item
-    ]
+```elixir
+list = [
+  :first_item,
+  :second_item
+]
 
-    sanitized_string =
-      some_string
-      |> String.downcase()
-      |> String.trim()
+sanitized_string =
+  some_string
+  |> String.downcase()
+  |> String.trim()
+```
 
 ## get[^2] fetch[^3] and bang(!)
 
-    dict = %{a: 1, b: 2}
+```elixir
+dict = %{a: 1, b: 2}
 
-    Map.get(dict, :a) # 1
-    Map.get(dict, :c) # nill, default value
-    Map.get(dict, :c, 3) # 3, default value
+Map.get(dict, :a) # 1
+Map.get(dict, :c) # nill, default value
+Map.get(dict, :c, 3) # 3, default value
 
-    # Getting by `[index]` have the same behaviour as Map.get function
-    dict[:a] # 1
-    dict[:c] # nil
+# Getting by `[index]` have the same behaviour as Map.get function
+dict[:a] # 1
+dict[:c] # nil
 
-    Map.fetch(dict, :a) # {:ok, 1}
-    Map.fetch(dict, :c) # :error
+Map.fetch(dict, :a) # {:ok, 1}
+Map.fetch(dict, :c) # :error
 
-    Map.fetch!(dict, :a) # 1
-    Map.fetch!(dict, :c) # (KeyError) key :c not found in: %{a: 1, b: 2}
+Map.fetch!(dict, :a) # 1
+Map.fetch!(dict, :c) # (KeyError) key :c not found in: %{a: 1, b: 2}
+```
 
 Application has the same naming pattern for get_env:
 
-    Applicaton.get_env/2
-    Applicaton.fetch_env!/2
-    Applicaton.fetch_env/2
+```elixir
+Applicaton.get_env/2
+Applicaton.fetch_env!/2
+Applicaton.fetch_env/2
+```
 
 ## Resources
 

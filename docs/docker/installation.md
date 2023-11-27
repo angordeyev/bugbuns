@@ -25,13 +25,11 @@ sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plug
 
 ## Run without sudo
 
-Edit docker service
+Edit docker service by adding:
 
-    sudo nano /usr/lib/systemd/system/docker.service
-
-Add
-
-    [Service]
-    ...
-    ExecStartPre=/usr/bin/setfacl --modify user:<user>:rw /var/run/docker.sock
-    ...
+```ini title="/usr/lib/systemd/system/docker.service"
+[Service]
+...
+ExecStartPre=/usr/bin/setfacl --modify user:<user>:rw /var/run/docker.sock
+...
+```

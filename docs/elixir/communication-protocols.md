@@ -1,5 +1,7 @@
-## Http
+# HTTP
 
-Read body
+Read body:
 
-    {:ok, body, _conn}  = Plug.Conn.read_body(conn)
+```elixir
+{:ok, body, _conn}  = Plug.Conn.read_body(conn)
+```

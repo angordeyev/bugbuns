@@ -1,59 +1,67 @@
 # rEFInd
 
-Working with rEFInd boot manager
+Working with rEFInd boot manager.
 
 ## Concepts
 
-ESP - EFI system partition for a UEFI boot manager
+ESP - EFI system partition for a UEFI boot manager.
 
 ## Quick Install
 
-Show the system devices
+Show the system devices:
 
-    lsblk
+```shell
+lsblk
+```
 
 Set a ESP to install rEFInd
 
-    DISK=/dev/<device>
+```shell
+DISK=/dev/<device>
+```
 
-Prepare the disk for a new system Installation, **be careful it will delete the disk data!**
+Prepare the disk for a new system Installation, **be careful it will delete the disk data!**:
 
-    # Reload the partition
-    sudo partprobe $DISK
+```shell
+# Reload the partition
+sudo partprobe $DISK
 
-    # Delete partition tables from the device and create the fresh partition tables
-    sudo wipefs --all --force $DISK   # Delete signatures/metadata/magic
-    sudo sgdisk --zap-all $DISK       # Delete GPT and MBR
-    sudo sgdisk --clear $DISK         # Create fresh GPT and protective MBR
+# Delete partition tables from the device and create the fresh partition tables
+sudo wipefs --all --force $DISK   # Delete signatures/metadata/magic
+sudo sgdisk --zap-all $DISK       # Delete GPT and MBR
+sudo sgdisk --clear $DISK         # Create fresh GPT and protective MBR
 
-    # Create the partitions
-    sudo sgdisk -n1:2048:+1G -t1:EF00 $DISK   # ESP
-    sudo sgdisk -n2 $DISK                       # Remaining space for Linux partition
+# Create the partitions
+sudo sgdisk -n1:2048:+1G -t1:EF00 $DISK   # ESP
+sudo sgdisk -n2 $DISK                       # Remaining space for Linux partition
 
-    # Get the partitions names
-    DISK1=/dev/$(sudo lsblk -J ${DISK} | jq -r '.blockdevices[0].children[0].name')
-    DISK2=/dev/$(sudo lsblk -J ${DISK} | jq -r '.blockdevices[0].children[1].name')
+# Get the partitions names
+DISK1=/dev/$(sudo lsblk -J ${DISK} | jq -r '.blockdevices[0].children[0].name')
+DISK2=/dev/$(sudo lsblk -J ${DISK} | jq -r '.blockdevices[0].children[1].name')
 
-    # Format the partitions
-    sudo mkfs.vfat ${DISK1} # ESP
-    sudo mkfs.ext4 ${DISK2} # Linux parition
+# Format the partitions
+sudo mkfs.vfat ${DISK1} # ESP
+sudo mkfs.ext4 ${DISK2} # Linux parition
+```
 
-Run the script below, **be careful it will overwrite the disk data!**
+Run the script below, **be careful it will overwrite the disk data!**:
 
-    # Install rEFInd to the default folder
-    sudo refind-install --usedefault ${DISK1}
+```shell
+# Install rEFInd to the default folder
+sudo refind-install --usedefault ${DISK1}
 
-    # Mount partition
-    sudo mount ${DISK1} /mnt/boot
+# Mount partition
+sudo mount ${DISK1} /mnt/boot
 
-    # Change timeout to load the default OS immediately
-    sudo sed -i 's/timeout.*/timeout -1/' /mnt/boot/EFI/BOOT/refind.conf
+# Change timeout to load the default OS immediately
+sudo sed -i 's/timeout.*/timeout -1/' /mnt/boot/EFI/BOOT/refind.conf
 
-    # Change resolution
-    sudo sed -i 's/#resolution 1024 768.*/resolution 1920 1080/' /mnt/boot/EFI/BOOT/refind.conf
+# Change resolution
+sudo sed -i 's/#resolution 1024 768.*/resolution 1920 1080/' /mnt/boot/EFI/BOOT/refind.conf
 
-    # Unmount
-    sudo umount /mnt/boot
+# Unmount
+sudo umount /mnt/boot
+```
 
 ## Shortcuts
 
@@ -68,31 +76,43 @@ https://www.rodsbooks.com/refind/
 
 Show the system devices
 
-    lsblk
+```shell
+lsblk
+```
 
 Set disk value
 
-    DISK=/dev/<disk>
+```shell
+DISK=/dev/<disk>
+```
 
-Delete partition tables from the device and create the fresh partition tables
+Delete partition tables from the device and create the fresh partition tables:
 
-    sudo wipefs --all --force $DISK   # Delete signatures/metadata/magic
-    sudo sgdisk --zap-all $DISK       # Delete GPT and MBR
-    sudo sgdisk --clear $DISK         # Create fresh GPT and protective MBR
+```shell
+sudo wipefs --all --force $DISK   # Delete signatures/metadata/magic
+sudo sgdisk --zap-all $DISK       # Delete GPT and MBR
+sudo sgdisk --clear $DISK         # Create fresh GPT and protective MBR
+```
 
 Warining: The kernel is using the old partition table. Reboot.
 
-    sudo sgdisk -n1:2048:+512M -t1:EF00 $DISK   # ESP
-    sudo sgdisk -n2 $DISK                       # Remaining space for Linux partition
+```shell
+sudo sgdisk -n1:2048:+512M -t1:EF00 $DISK   # ESP
+sudo sgdisk -n2 $DISK                       # Remaining space for Linux partition
+```
 
-Format the partition
+Format the partition:
 
-    sudo mkfs.vfat ${DISK}1 # ESP
-    sudo mkfs.ext4 ${DISK}2 # Linux parition
+```shell
+sudo mkfs.vfat ${DISK}1 # ESP
+sudo mkfs.ext4 ${DISK}2 # Linux parition
+```
 
-Reload the partitions in the OS
+Reload the partitions in the OS:
 
-    sudo partprobe $DISK
+```shell
+sudo partprobe $DISK
+```
 
 ## Manual Installation
 
@@ -100,67 +120,95 @@ Check the latest version by going to [rEFInd page](https://www.rodsbooks.com/ref
 
 [Download](https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download) rEFInd binary zip file
 
-    wget -O /tmp/refind-bin-0.14.0.2.zip https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download
+```shell
+wget -O /tmp/refind-bin-0.14.0.2.zip https://sourceforge.net/projects/refind/files/0.14.0.2/refind-bin-0.14.0.2.zip/download
+```
 
 Unzip archive
 
-    unzip /tmp/refind-bin-0.14.0.2.zip
+```shell
+unzip /tmp/refind-bin-0.14.0.2.zip
+```
 
 Mount boot partition
 
-    sudo mount -m ${DISK}1 /mnt/boot # or sudo mount -o X-mount.mkdir ${DISK}1 /mnt/boot
+```shell
+sudo mount -m ${DISK}1 /mnt/boot # or sudo mount -o X-mount.mkdir ${DISK}1 /mnt/boot
+```
 
 Copy the content to the `/mnt/boot` directory
 
-    sudo mkdir -p /mnt/boot/EFI && sudo cp -r /tmp/refind-bin-0.14.0.2/refind $_
+```shell
+sudo mkdir -p /mnt/boot/EFI && sudo cp -r /tmp/refind-bin-0.14.0.2/refind $_
+```
 
 Rename the directoy and the file to the default UIFI names if required (useful for removable flash USB drives)
 
-    sudo mv /mnt/boot/EFI/refind /mnt/boot/EFI/BOOT
+```shell
+sudo mv /mnt/boot/EFI/refind /mnt/boot/EFI/BOOT
 
-    sudo mkdir -p /mnt/boot/EFI && sudo cp -r /tmp/refind-bin-0.14.0.2/refind $_
+sudo mkdir -p /mnt/boot/EFI && sudo cp -r /tmp/refind-bin-0.14.0.2/refind $_
+```
 
 Rename the rEFInd config
 
-    sudo mv /mnt/boot/EFI/refind/refind.conf-sample /mnt/boot/EFI/refind/refind.conf
+```shell
+sudo mv /mnt/boot/EFI/refind/refind.conf-sample /mnt/boot/EFI/refind/refind.conf
+```
 
 Check if rEFIind boot manager exist
 
-    sudo efibootmgr -v
+```shell
+sudo efibootmgr -v
+```
 
 Add rEFInd to EFI's list of available bootloaders **if the default path is not used**
 
-    sudo efibootmgr -d ${DISK} -c -l  \\EFI\\refind\\refind_x64.efi -L rEFInd
+```shell
+sudo efibootmgr -d ${DISK} -c -l  \\EFI\\refind\\refind_x64.efi -L rEFInd
+```
 
 ## Manage EFI Boot Entries
 
 Show boot entries
 
-    sudo efibootmgr
+```shell
+sudo efibootmgr
+```
 
 Remove boot entries in the list, using `Boot000<i>` index
 
-    sudo efibootmgr -b <i> -B # remove the item with name Boot000i
+```shell
+sudo efibootmgr -b <i> -B # remove the item with name Boot000i
+```
 
 Show PARTUUIDs used in ESPs
 
-    sudo blkid -s PARTUUID -t TYPE=vfat
+```shell
+sudo blkid -s PARTUUID -t TYPE=vfat
+```
 
 ## Configure rEFInd
 
 Mount the EFI partition
 
+```shell
     DISK=/dev/<disk>
-    
+
     sudo mount -m ${DISK}1 /mnt/boot # or sudo mount -o X-mount.mkdir ${DISK}1 /mnt/boot
+```
 
 Change timeout to load the default OS immediately
 
-    sudo sed -i 's/timeout.*/timeout -1/' /tmp/boot/EFI/refind/refind.conf
+```shell
+sudo sed -i 's/timeout.*/timeout -1/' /tmp/boot/EFI/refind/refind.conf
+```
 
 Change resolution
 
-    sudo sed -i 's/#resolution 1024 768.*/resolution 1920 1080/' /mnt/boot/EFI/refind/refind.conf
+```shell
+sudo sed -i 's/#resolution 1024 768.*/resolution 1920 1080/' /mnt/boot/EFI/refind/refind.conf
+```
 
 ## Theming
 

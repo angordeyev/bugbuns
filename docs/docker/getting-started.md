@@ -1,53 +1,83 @@
 # Getting Started
 
-Pull an image
+Pull an image:
 
-    ➜ sudo docker image pull ubuntu
+```shell
+sudo docker image pull ubuntu
+```
 
-Run command in container
+Run command in container:
 
-    ➜ docker run ubuntu ls -la
+```shell
+docker run ubuntu ls -la
+```
 
-Run container with interactive terminal
+Run container with interactive terminal:
 
-    ➜ docker run -it ubuntu
+```shell
+docker run -it ubuntu
+```
 
-Exit a container and terminate
+Exit a container and terminate:
 
-    ➜ exit
+```shell
+exit
+```
 
-Exit a container without terminating it
+Exit a container without terminating it:
 
-    ➜ Ctrl-PQ
+```shell
+Ctrl-PQ
+```
 
-List running containers
+List running containers:
 
-    ➜ docker ps
+```shell
+docker ps
+```
+```output
     11ef884f8df6   ubuntu    "bash"    ...
+```
 
-Attach shell to running container, first characters of container ID can be used 
+Attach shell to running container, first characters of container ID can be used:
 
-    ➜ docker exec -it <container_name_or_id> bash
+```shell
+docker exec -it <container_name_or_id> bash
+```
 
-Stop a container
+Stop a container:
 
-    ➜ docker stop <container_name_or_id>
+```shell
+docker stop <container_name_or_id>
+```
 
-And see that the container is no longer running
+And see that the container is no longer running:
 
-    ➜ docker ps
+```shell
+docker ps
+```
 
-But the container is still in the list with "exited" status
+But the container is still in the list with "exited" status:
 
-    ➜ docker ps -a
+```shell
+docker ps -a
+```
+```output
     CONTAINER ID   IMAGE ...
     5ff3f26c9b43   ubuntu ...
+```
 
-Remove container
+Remove the container:
 
-    ➜ docker rm 5f
+```shell
+docker rm 5f
+```
 
-The container no longer exists
+Check the container no longer exists:
 
-    ➜ docker ps -a
+```shell
+docker ps -a
+```
+```output
     CONTAINER ID   IMAGE ...
+```
