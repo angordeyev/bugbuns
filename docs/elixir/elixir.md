@@ -6,56 +6,81 @@ Elixir as Constructor
 
 ### Alias
 
-Defines new name for Atom, the name should start with Upper Letter
+Defines new name for Atom, the name should start with Upper Letter:
 
-    iex> alias :a, as: A
-    iex> A
-    :a
+```elixir
+iex> alias :a, as: A
+iex> A
+```
+```output
+:a
+```
 
-    alias Math.List # same as alias Math.List, as: List
-    List # Math.List
+```elixir
+alias Math.List # same as alias Math.List, as: List
+List # Math.List
 
-    iex> alias :a, as: :b # Error
+iex> alias :a, as: :b # Error
+```
 
 ### Import
 
-Allows to use public module functions without module name
+Allows to use public module functions without module name:
 
-    import List
-    first([1, 2, 3]) # 1
+```elixir
+import List
+first([1, 2, 3]) # 1
+```
 
-Import to use functions without module name
+Import to use functions without module name:
 
+```elixir
     iex> import List # imports all functions
          import List, only: [first: 2] # import only one function "List.first/2"
+```
 
+```elixir
     iex> first([1,2,3], "default")
-    1
+```
+```output
+1
+```
 
-    iex> first([1,2,3]) # only List.first/2 is imported
+```elixir
+iex> first([1,2,3]) # only List.first/2 is imported
+```
+```output
     ** (CompileError) iex:4: undefined function first/1 (there is no such import)
+```
 
-Importing module automatically requires it
+Importing a module automatically requires it:
 
-    iex> import Logger
-    iex> info("hello")
-    [info] hello
-    :ok
+```elixir
+iex> import Logger
+iex> info("hello")
+```
+```output
+[info] hello
+:ok
+```
 
-Use to extend module
+Use to extend module:
 
-    defmodule Chucky.Server do
-      use GenServer
+```elixir
+defmodule Chucky.Server do
+  use GenServer
 
-      ...
+  ...
 
-    end
-
+end
+```
 Require to use macro
 
-    require Integer
+```elixir
+require Integer
 
-    Integer.is_odd(1)
+Integer.is_odd(1)
+```
 
 ## Data types
 
@@ -67,181 +92,286 @@ There are two major types of terms:
 
 ### Arithmetic
 
-    30 # 30, decimal
-    0x1E # 30, hex
-    0b11110 # 30, binary
-    0o36 # 30, octal
+```elixir
+30 # 30, decimal
+0x1E # 30, hex
+0b11110 # 30, binary
+0o36 # 30, octal
+```
 
 Separator
 
-Can be used for thousands
+Can be used for thousands:
 
-    1_000 # 1000
+```elixir
+1_000 # 1000
+```
 
-But it works in other places as well
+But it works in other places as well:
 
-    1_00 # 100
-    0x00_0A # 10
-    0b0000_0001 # 1
+```elixir
+1_00 # 100
+0x00_0A # 10
+0b0000_0001 # 1
+```
 
 ### Atoms
 
-    is_atom(:atom) # true
-    is_atom(Atom) # true
-    is_atom(false) # true
-    is_atom(:"123") # true
-    is_atom(1) # false
-    is_atom("atom") # false
+```elixir
+is_atom(:atom) # true
+is_atom(Atom) # true
+is_atom(false) # true
+is_atom(:"123") # true
+is_atom(1) # false
+is_atom("atom") # false
+```
 
-All uppercase atoms in Elixir automatically receive the Elixir. prefix.
+All uppercase atoms in Elixir automatically receive the `Elixir.` prefix:
 
-    List == :"Elixir.List"
-    :"Elixir.List".first([1,2,3]) # 1
+```elixir
+List == :"Elixir.List"
+:"Elixir.List".first([1,2,3]) # 1
+```
 
-Because List is just an alias
+Because List is just an alias:
 
-    alias :"Elixir.List", as: List
+```elixir
+alias :"Elixir.List", as: List
+```
 
-If charlist is used when defining an atom it is converted to binary
+If charlist is used when defining an atom it is converted to binary:
 
-    :"123" == :'123' # true
-    :'123' # :"123"
+```elixir
+:"123" == :'123' # true
+:'123' # :"123"
+```
 
 Maximum number of atoms:
 
-    :math.pow(2,20) == 1048576 # true
-    :erlang.system_info(:atom_limit) == 1048576 # default
+```elixir
+:math.pow(2,20) == 1048576 # true
+:erlang.system_info(:atom_limit) == 1048576 # default
+```
 
-Atoms limit can be increased
+Atoms limit can be increased:
 
-    iex --erl "+t 2097152" # 8192-2 147483647
+```elixir
+iex --erl "+t 2097152" # 8192-2 147483647
+```
 
-Atom uses one word
+Atom uses one word.
 
 ### Binary
 
 **Bitstrings**
 
-8 bits are used by default for each element in BitString
+8 bits are used by default for each element in BitString:
 
-    <<1, 0x02, "a">> # <<1, 2, 97>>
-    <<255, 256, 257>> # <<255, 0, 1>>, 256 does not fit and starts again from 0
+```elixir
+<<1, 0x02, "a">> # <<1, 2, 97>>
+<<255, 256, 257>> # <<255, 0, 1>>, 256 does not fit and starts again from 0
+```
 
-Number of bits can be set using `::n` expression
+Number of bits can be set using `::n` expression:
 
-    <<1::1>> == <<1::size(1)>> # true, shortcut expression
-    <<1::1, 1::1>> == <<3::size(2)>> # true
-    <<1::4, 1::4>> # << 17 >>, full 8 bits
-    <<255::16, 256::16, 257::16>> # <<0, 255, 1, 0, 1, 1>>
+```elixir
+<<1::1>> == <<1::size(1)>> # true, shortcut expression
+<<1::1, 1::1>> == <<3::size(2)>> # true
+<<1::4, 1::4>> # << 17 >>, full 8 bits
+<<255::16, 256::16, 257::16>> # <<0, 255, 1, 0, 1, 1>>
+```
 
-**Binary** is a bitstring where the number of bits is divisible by 8
+**Binary** is a bitstring where the number of bits is divisible by 8:
 
-    <<100>> == <<100::8>> # true
-    is_bitstring("a") # true
-    is_bitstring(<<100>>) # true
-    is_bitstring(<<100::4>>) # true
-    is_bitstring(<<100::8>>) # true
-    is_bitstring(<<100::16>>) # true
+```elixir
+<<100>> == <<100::8>> # true
+is_bitstring("a") # true
+is_bitstring(<<100>>) # true
+is_bitstring(<<100::4>>) # true
+is_bitstring(<<100::8>>) # true
+is_bitstring(<<100::16>>) # true
 
-    is_binary("a") # true
-    is_binary("п") # true
-    is_binary(<<100>>) # true
-    is_binary(<<100::16>>) # true
-    is_binary(<<1::4, 1::4>>) # true
-    is_binary(<<100::4>>) # false
+is_binary("a") # true
+is_binary("п") # true
+is_binary(<<100>>) # true
+is_binary(<<100::16>>) # true
+is_binary(<<1::4, 1::4>>) # true
+is_binary(<<100::4>>) # false
+```
 
-Match to binary
+Match to binary:
 
-    iex> <<first::binary-size(1), second::binary-size(2), rest::binary>> = "123___"
-    "123___"
+```elixir
+iex> <<first::binary-size(1), second::binary-size(2), rest::binary>> = "123___"
+```
+```output
+ "123___"
+```
 
-    iex> {first, second, rest}
-    {"1", "23", "___"}
+```elixir
+iex> {first, second, rest}
+```
+```output
+{"1", "23", "___"}
+```
 
-    # Pattern match does not work without rest binary
-    iex> <<first::binary-size(1), second::binary-size(2)>> = "123___"
-    ** (MatchError) no match of right hand side value: "123___"
+```elixir
+# Pattern match does not work without rest binary
+iex> <<first::binary-size(1), second::binary-size(2)>> = "123___"
+```
+```output
+  ** (MatchError) no match of right hand side value: "123___"
+```
 
 **Double quotes strings**
 
-    "12" == << 49, 50 >> # true
+```elixir
+"12" == << 49, 50 >> # true
+```
 
 **Concatenation**
 
-    "a" <> "b" # ab
-    <<1>> <> <<2>> # <<1, 2>>
+```elixir
+"a" <> "b" # ab
+<<1>> <> <<2>> # <<1, 2>>
+```
 
 ### Tuple
 
-    {1, :a, Temp}
+```elixir
+{1, :a, Temp}
+```
 
 Is like array and uninterrupted, or continuously in memory.
 
 ### List
 
-    [1, :a, Temp]
+```elixir
+[1, :a, Temp]
+```
 
 ### Keyword list
 
 Elixir keyword list is shortcut for a list tuples
 
-    iex> keyword_list = [{:a, 1}, {:b, 2}] # same as below
-    [a: 1, b: 2]
-
-    iex> keyword_list = [{A, 1}, b: 2] # same as below, no short syntax
-    [{A, 1}, {:b, 2}] #
+```elixir
+iex> keyword_list = [{:a, 1}, {:b, 2}] # same as below
+```
+```output
+[a: 1, b: 2]
+```
+```elixir
+iex> keyword_list = [{A, 1}, b: 2] # same as below, no short syntax
+```
+```output
+[{A, 1}, {:b, 2}] #
+```
 
 Elements can be accessed like this:
 
-    keyword_list = [{A, 1}, b: 2]
-    [{A, 1}, {:b, 2}]
+```elixir
+keyword_list = [{A, 1}, b: 2]
+```
+```output
+[{A, 1}, {:b, 2}]
+```
+
+```elixir
+iex> keyword_list[A]
+```
+```output
+1
+```
+
+```elixir
+iex> keyword_list[:b]
+```
+```output
+2
+```
+
+```elixir
+iex> keyword_list[:c]
+```
+```output
+nil
+```
 
 
-    iex> keyword_list[A]
-    1
+```elixir
+iex> Keyword.get(keyword_list, A)
+```
+```output
+1
+```
 
-    iex> keyword_list[:b]
-    2
+```elixir
+iex> Keyword.get(keyword_list, :b)
+```
+```output
+2
+```
 
-    iex> keyword_list[:c]
-    nil
+```elixir
+iex> Keyword.get(keyword_list, :c)
+```
+```output
+nil
+```
 
-    iex> Keyword.get(keyword_list, A)
-    1
+```elixir
+iex> Keyword.fetch(keyword_list, A)
+```
+```output
+{:ok, 1}
+```
 
-    iex> Keyword.get(keyword_list, :b)
-    2
+```elixir
+iex> Keyword.fetch(keyword_list, :b)
+```
+```output
+{:ok, 2}
+```
 
-    iex> Keyword.get(keyword_list, :c)
-    nil
+```elixir
+iex> Keyword.fetch(keyword_list, :c)
+```
+```output
+:error
+```
 
-    iex> Keyword.fetch(keyword_list, A)
-    {:ok, 1}
+```elixir
+iex> Keyword.fetch!(keyword_list, A)
+```
+```output
+1
+```
 
-    iex> Keyword.fetch(keyword_list, :b)
-    {:ok, 2}
+```elixir
+iex> Keyword.fetch!(keyword_list, :b)
+```
+```output
+2
+```
 
-    iex> Keyword.fetch(keyword_list, :c)
-    :error
+```elixir
+iex> Keyword.fetch!(keyword_list, :c)
+```
+```output
+  (KeyError) key :c not found in: [{A, 1}, {:b, 2}]
+```
 
-    iex> Keyword.fetch!(keyword_list, A)
-    1
+but:
 
-    iex> Keyword.fetch!(keyword_list, :b)
-    2
-
-    iex> Keyword.fetch!(keyword_list, :c)
-    (KeyError) key :c not found in: [{A, 1}, {:b, 2}]
-
-
-
-but
-
-    keyword_list.a # Error: left side should be atom or map
+```elixir
+keyword_list.a # Error: left side should be atom or map
+```
 
 **Keyworld list** can we used in in list and map but it shoud go last
 
 Lists
+
+```elixir
 
     [{:a, 1}, b: 1, c: :d] # [a: 1, b: 1, c: :d]
 
@@ -249,16 +379,21 @@ Lists
 
     [a: 1, {:b, 1}] # Error: Keyword lists must always come last in lists and maps
 
+```
+
 Maps
 
+```elixir
     %{:a => 1, b: 2} # %{a: 1, b: 2}
 
     %{a: 1, :b => 2} # Error: Keyword lists must always come last in lists and maps
+```
 
 Call syntax
 
 When keyword list is passed as the last argument when calling a function, square bracket can be ommited
 
+```elixir
     IO.inspect a: 1, b: 2 # [a: 1, b: 2]
     IO.inspect(a: 1, b: 2) # [a: 1, b: 2]
     String.split " a b c ", " ", trim: true # ["a", "b", "c"]
@@ -266,223 +401,258 @@ When keyword list is passed as the last argument when calling a function, square
     IO.inspect(a: 1, b: 2, label: "test") # [a: 1, b: 2, label: "test"],
                                           # label: "test" is treated as the part of signle parameter
     IO.inspect([a: 1, b: 2], label: "test") # [a: 1, b: 2]
+```
 
 Do block is a keyword list
 
-    iex> [{:do, "Done"}, {:else, "Other"}]
-    [do: "Done", else: "Other"]
+```elixir
+iex> [{:do, "Done"}, {:else, "Other"}]
+```
+```output
+[do: "Done", else: "Other"]
+```
 
 ### Map
 
-    iex> m = %{1 => "value_1", :a => "value_a", Temp => TempValue}
-    %{1 => "value_1", Temp => TempValue, :a => "value_a"}
+```elixir
+iex> m = %{1 => "value_1", :a => "value_a", Temp => TempValue}
+%{1 => "value_1", Temp => TempValue, :a => "value_a"}
 
-    iex> m[1]
-    1
+iex> m[1]
+1
 
-    iex> m.a
-    "value_a"
+iex> m.a
+"value_a"
 
-    iex> m[:a]
-    "value_a"
 
-    iex> Map.get(m, :a)
-    "value_a"
+iex> m[:a]
+"value_a"
 
-    iex> Map.fetch(m, :a)
-    {:ok, "value_a"}
+iex> Map.get(m, :a)
+"value_a"
 
-    iex> Map.fetch!(m, :a)
-    "value_a"
+iex> Map.fetch(m, :a)
+{:ok, "value_a"}
 
-    iex> Map.get(m, :c)
-    nil
+iex> Map.fetch!(m, :a)
+"value_a"
 
-    iex> Map.fetch(m, :c)
-    :error
+iex> Map.get(m, :c)
+nil
 
-    iex> Map.fetch!(m, :c)
-    key :c not found in: %{1 => "value_1", Temp => TempValue, :a => "value_a"}
+iex> Map.fetch(m, :c)
+:error
 
-    iex> m[Temp]
-    TempValue
+iex> Map.fetch!(m, :c)
+key :c not found in: %{1 => "value_1", Temp => TempValue, :a => "value_a"}
+
+iex> m[Temp]
+TempValue
+```
 
 ### Structs
 
 Structs are maps
 
-Stucts and maps starts with `%` sign
+Stucts and maps starts with `%` sign:
 
-    defmodule User do
-      defstruct [:name, :age]
-    end
+```elixir
+defmodule User do
+  defstruct [:name, :age]
+end
 
-    defmodule User do
-      defstruct name: nil, age: 18
-    end
+defmodule User do
+  defstruct name: nil, age: 18
+end
 
-    defmodule User do
-      defstruct [:name, age: 18] # keyword list shoud go las in the list, otherwise see below
-    end
+defmodule User do
+  defstruct [:name, age: 18] # keyword list shoud go las in the list, otherwise see below
+end
 
-    defmodule User do
-      defstruct [{:name, nil}, :age]
-    end
+defmodule User do
+  defstruct [{:name, nil}, :age]
+end
 
-    %User{} # %User{age: nil, name: nil}
-    %User{name: "Andrew", age: 20} # %User{age: nil, name: "Andrew"}
+%User{} # %User{age: nil, name: nil}
+%User{name: "Andrew", age: 20} # %User{age: nil, name: "Andrew"}
+```
 
-Error check
+Error check:
 
-    defmodule User do
-      defstruct [:name, :age]
-    end
+```elixir
+defmodule User do
+  defstruct [:name, :age]
+end
 
-    defmodule Hello do
-      @spec work(User) :: String.t
-      def work(user) do
-        user.name
-      end
+defmodule Hello do
+  @spec work(User) :: String.t
+  def work(user) do
+    user.name
+  end
 
-      def test do
-        Hello.work(%{name: "Andrey", age: 20})
-      end
-    end
+  def test do
+    Hello.work(%{name: "Andrey", age: 20})
+  end
+end
+```
 
 #### Ranges
 
-Definition
+Definition:
 
-    iex> 1..3
-    1..3
+```elixir
+iex> 1..3
+1..3
 
-    iex> 1..10//2
-    1..10//2
+iex> 1..10//2
+1..10//2
 
-    iex> Range.new(1,10,2) # using function
-    1..10//2
+iex> Range.new(1,10,2) # using function
+1..10//2
 
-    iex> a = 1; b = 5; a..b
-    1..5
+iex> a = 1; b = 5; a..b
+1..5
+```
 
-Ranges are stored as structs
+Ranges are stored as structs:
 
-Pattern matching
+Pattern matching:
 
-    iex> first..last//step = 1..10/2
-    1..10//2
+```elixir
+iex> first..last//step = 1..10/2
+1..10//2
 
-    iex> first..last//step = 1..10
-    1..10//2
-    iex>{first, last, step}
-    {1,10,1}
+iex> first..last//step = 1..10
+1..10//2
+iex>{first, last, step}
+{1,10,1}
+```
 
 Range implements Enumerable protocol
 Reduce
 
-    iex> Enum.reduce(1..3, 0, fn i, acc -> acc + i end)
-    6
+```elixir
+iex> Enum.reduce(1..3, 0, fn i, acc -> acc + i end)
+6
+```
 
 ## Language constructions
 
 ## Sigils[^3]
 
-Sigils are normaly used with () delimiters althought the following delimiters are available:
-`//, ||, "", '', (), [], {}, <>`
+Sigils are normaly used with () delimiters althought the following delimiters are available: `//, ||, "", '', (), [], {}, <>`
 
-    ~s("hello") # "\"hello\""
-    ~D[2020-12-31] # ~D[2020-12-31], date
-    ~w(hello world) # ["hello", "world"], world list
-    ~w"hello world" # ["hello", "world"], world list
-    ~w"hello world"a # [:hello, :world], a - atom parameter
-    ~w(hello #{1+1}) # ["hello", "2"], with inerpolation
-    ~W(hello #{1+1}) # ["hello", "\#{1+1}"], without interpolation
+```elixir
+~s("hello") # "\"hello\""
+~D[2020-12-31] # ~D[2020-12-31], date
+~w(hello world) # ["hello", "world"], world list
+~w"hello world" # ["hello", "world"], world list
+~w"hello world"a # [:hello, :world], a - atom parameter
+~w(hello #{1+1}) # ["hello", "2"], with inerpolation
+~W(hello #{1+1}) # ["hello", "\#{1+1}"], without interpolation
+```
 
-Same as
+Same as:
 
-    sigil_w(<<"hello world">>, 's') # ["hello", "world"] # s - strings
-    sigil_w(<<"hello world">>, 'a') # [:hello, :world]   # a - atoms
+```elixir
+sigil_w(<<"hello world">>, 's') # ["hello", "world"] # s - strings
+sigil_w(<<"hello world">>, 'a') # [:hello, :world]   # a - atoms
+```
 
 Getting help
 
-    h sigil_w
+```elixir
+iex> h sigil_w
+```
 
 Defining own sigils is simple
 
-    defmodule SemicolonList do
-      def sigil_x(string, [])do
-        String.split(string, ";")
-      end
-    end
+```elixir
+defmodule SemicolonList do
+  def sigil_x(string, [])do
+    String.split(string, ";")
+  end
+end
 
-    import SemicolonList
+import SemicolonList
 
-    ~x(1;2) # ["1", "2"]
+~x(1;2) # ["1", "2"]
+```
 
 ## Documentation
 
-    defmodule HelloDocs do
-      @moduledoc """
-      Documentation for `HelloDocs`.
-      """
+```elixir
+defmodule HelloDocs do
+  @moduledoc """
+  Documentation for `HelloDocs`.
+  """
 
-      @doc """
-      Hello world.
+  @doc """
+  Hello world.
 
-      ## Examples
+  ## Examples
 
-          iex> HelloDocs.hello()
-          :world
+      iex> HelloDocs.hello()
+      :world
 
-      """
-      def hello do
-        :world
-      end
-    end
+  """
+  def hello do
+    :world
+  end
+end
+```
 
 Then you can read documentation
 
-    h HelloDocs
-    h HelloDocs.hello
+```elixir
+iex> h HelloDocs
+iex> h HelloDocs.hello
+```
 
 ## JSON encoding/decoding
 
-Encoding
+Encoding:
 
-    iex> Jason.encode!(:a) == Jason.encode!("a")
-    true
+```elixir
+iex> Jason.encode!(:a) == Jason.encode!("a")
+true
 
-    iex> Jason.encode!(:a) == ~s("a")
-    true
+iex> Jason.encode!(:a) == ~s("a")
+true
 
-    iex> Jason.encode!(:a) == "\"a\""
-    true
+iex> Jason.encode!(:a) == "\"a\""
+true
 
-    iex> Jason.encode!(%{a: :aa, "b" => "bb"},)
-    "{\"a\":1}"
+iex> Jason.encode!(%{a: :aa, "b" => "bb"},)
+"{\"a\":1}"
 
-    iex> Jason.encode!(%{a: 1}) == Jason.encode!(%{"a" => 1})
-    true
+iex> Jason.encode!(%{a: 1}) == Jason.encode!(%{"a" => 1})
+true
+```
 
-Decoding
+Decoding:
 
-    iex> Jason.decode!(~s({"a":1,"b":"bb"}))
-    %{"a" => 1, "b" => "bb"}
+```elixir
+iex> Jason.decode!(~s({"a":1,"b":"bb"}))
+%{"a" => 1, "b" => "bb"}
+```
 
 ## Environments
 
-    MIX_ENV=test
-    MIX_ENV=dev
-    MIX_ENV=prod
+```shell
+MIX_ENV=test
+MIX_ENV=dev
+MIX_ENV=prod
+```
 
-E.g. to rest test migration
+For example to reset test migration:
 
-    MIX_ENV=test mix ecto.reset
+```shell
+MIX_ENV=test mix ecto.reset
+```
 
 ## Reference
 
 [^2]: IEx - interactive Elixir; pry - вмешиваться
 [^3]: sigil - символ (кельтский символ, символ льва)
 [^4]: In mathematical logic, a term denotes a mathematical object while a formula denotes a mathematical fact. (wikipedia)
-
-

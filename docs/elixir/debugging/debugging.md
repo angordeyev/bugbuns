@@ -2,28 +2,36 @@
 
 ## Inspecting
 
-    [1, 2, 3]
-    |> IO.inspect() # prints [1, 2, 3]
+```elixir
+[1, 2, 3]
+|> IO.inspect() # prints [1, 2, 3]
+```
 
-Using inspect label in pipelines
+Using inspect label in pipelines:
 
-    [1, 2, 3]
-    |> IO.inspect(label: "before") # prints "before: [1, 2, 3]"
-    |> Enum.count() # retuns 3
+```elixir
+[1, 2, 3]
+|> IO.inspect(label: "before") # prints "before: [1, 2, 3]"
+|> Enum.count() # retuns 3
+```
 
 ## Pry
 
 use `IEX.pry`[^2]
 
-    a = "hello"
-    IO.puts a # a
-    # interactive shell will ask to stop here,
-    # press "n" to continue or "y" to debug
-    require IEx; IEx.pry()
+```elixir
+a = "hello"
+IO.puts a # a
+# interactive shell will ask to stop here,
+# press "n" to continue or "y" to debug
+require IEx; IEx.pry()
+```
 
 In pry mode
 
-    pry> IO.puts a # hello
+```elixir
+pry> IO.puts a # hello
+```
 
 ## Breakpoints
 
@@ -33,7 +41,9 @@ In pry mode
 
 ## Observer
 
-    :observer.start
+```elixir
+iex> :observer.start
+```
 
 ## Messages
 
@@ -48,7 +58,9 @@ Listen incoming process messages:
 
 [Recon](https://hex.pm/packages/recon)
 
-    :recon_trace.calls({Phoenix.Socket.Transport, :check_origin, :return_trace}, 1000)
+```elixir
+:recon_trace.calls({Phoenix.Socket.Transport, :check_origin, :return_trace}, 1000)
+```
 
 ## Resources
 

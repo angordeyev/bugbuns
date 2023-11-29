@@ -1,41 +1,73 @@
-## Working with directories and files
+# Working with directories and files
 
-Creating a new file with content
+Creating a new file with content:
 
-    iex> File.write("tmp.txt\n", "Hello file")
-    :ok
+```elixir
+iex> File.write("tmp.txt\n", "Hello file")
+```
+```output
+:ok
+```
 
-    iex> File.read("tmp.txt")
-    {:ok, "Hello file\n"}
+```elixir
+iex> File.read("tmp.txt")
+```
+```output
+{:ok, "Hello file\n"}
+```
 
-    iex> File.write("tmp.txt", "Hello new\n")
-    :ok
+```elixir
+iex> File.write("tmp.txt", "Hello new\n")
+```
+```output
+:ok
+```
 
-    iex> File.read("tmp.txt")
-    {:ok, "Hello new\n"}
+```elixir
+iex> File.read("tmp.txt")
+```
+```output
+{:ok, "Hello new\n"}
+```
 
-Append to file
+Append to a file:
 
-    iex> File.write("tmp.txt", "line2\n", [:append])
-    :ok
+```elixir
+iex> File.write("tmp.txt", "line2\n", [:append])
+```
+```output
+:ok
+```
 
-    iex> File.read("tmp.txt")
+```elixir
+iex> File.read("tmp.txt")
+```
 
-Using heredoc
+Using heredoc:
 
-    iex> File.write("tmp.txt", """
-    line1
-    line2
-    """)
+```elixir
+iex> File.write("tmp.txt", """
+line1
+line2
+""")
+```
+```output
+:ok
+```
 
-    :ok
+```elixir
+iex> File.read("tmp.txt")
+```
+```output
+{:ok, "line1\nline2\n"}
+```
 
-    iex> File.read("tmp.txt")
-    {:ok, "line1\nline2\n"}
+```elixir
+iex> IO.puts(File.read!("tmp.txt"))
+```
+```output
+line1
+line2
 
-    iex> IO.puts(File.read!("tmp.txt"))
-    line1
-    line2
-
-    :ok
-
+:ok
+```

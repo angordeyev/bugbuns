@@ -12,7 +12,7 @@
 > | bridge             | Handle bridge addresses and device |
 > | ss                 | Show various networking statistics |
 > | tc                 | Traffic control settings           |
-> 
+>
 > -- [iproute2. Wikipedia.](https://en.wikipedia.org/wiki/Iproute2)
 
 ## Install
@@ -67,11 +67,15 @@ io link
 
 Running command for IPv4:
 
-    ip -4 <command>
+```shell
+ip -4 <command>
+```
 
 Running command for IPv6:
 
-    ip -6 <command>
+```shell
+ip -6 <command>
+```
 
 ## Frequently Used Commands
 

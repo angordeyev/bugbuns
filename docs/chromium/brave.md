@@ -11,13 +11,17 @@ Ctrl-Alt-T - translate using Context.Reverso
 
 ## PWA
 
-    brave --app=http://<some-site>.com
+```shell
+brave --app=http://<some-site>.com
+```
 
 ## Surfing Keys
 
 [Open url in current tab](https://github.com/brookhong/Surfingkeys/issues/68)
 
-    mapkey('o','#8Open an URL in current tab', function() {Front.openOmnibar({type: "URLs", extra: "getTopSites", tabbed: false});});
+```javascript
+mapkey('o','#8Open an URL in current tab', function() {Front.openOmnibar({type: "URLs", extra: "getTopSites", tabbed: false});});
+```
 
 ## Resources
 

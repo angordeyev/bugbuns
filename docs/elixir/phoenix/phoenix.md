@@ -2,9 +2,11 @@
 
 ## Creating Application
 
-Create application
+Create an application:
 
-    mix phx.new hello_phoenix
+```shell
+mix phx.new hello_phoenix
+```
 
 Context are modules with releated functionality.
 For examples a group of modules related to user functionality:
@@ -19,218 +21,272 @@ Generate controller, views, and context for an HTML resource
 There can be multiple models in one context. One context for multiple models may be user to combine
 closely related functionality.
 
-    mix phx.gen.html Users User users name:string
-    mix setup
+```shell
+mix phx.gen.html Users User users name:string
+mix setup
+```
 
 Create `/api` scope section and resource to `HelloUsersWeb.Router` in `router.ex`
 
-    scope "/api", HelloPhoenixWeb do
-      pipe_through :api
+```elixir
+scope "/api", HelloPhoenixWeb do
+  pipe_through :api
 
-      resources "/users", UserController
-    end
+  resources "/users", UserController
+end
+```
 
 Show all routes
 
-    mix phx.routes
+```shell
+mix phx.routes
+```
 
 The following paths are available:
 
-    GET     /users          :index    show all the users
-    GET     /users/:id      :show     show a user identified by id slug[^1]
+```output
+GET     /users          :index    show all the users
+GET     /users/:id      :show     show a user identified by id slug[^1]
 
-    GET     /users/new      :new      show a form for creating a new user
-    GET     /users/:id/edit :edit     get a user by id and show a form for editing
+GET     /users/new      :new      show a form for creating a new user
+GET     /users/:id/edit :edit     get a user by id and show a form for editing
 
-    POST    /users          :create   save a new user
-    PUT     /users/:id      :update   update the user with an id using full object to replace
-    PATCH   /users/:id      :update   update the user with an id using parial information
-                                      (field-value pairs or change instructions)
+POST    /users          :create   save a new user
+PUT     /users/:id      :update   update the user with an id using full object to replace
+PATCH   /users/:id      :update   update the user with an id using parial information
+                                  (field-value pairs or change instructions)
 
-    DELETE  /users/:id      :delete   remove the user with an id
+DELETE  /users/:id      :delete   remove the user with an id
+```
 
 You can go to `http://localhost:4000/users` and play with listing, creating, and updating users
 
 Generates controller, views, and context for a JSON resource
 
-    mix phx.gen.json Communication Message messages text:string
-    mix ecto.migrate
+```shell
+mix phx.gen.json Communication Message messages text:string
+mix ecto.migrate
+```
 
 Add resource to `HelloUsersWeb.Router` in `router.ex`
 
-    scope "/api", HelloPhoenixWeb do
-      pipe_through :api
+```elixir
+scope "/api", HelloPhoenixWeb do
+  pipe_through :api
 
-      resources "/users", UserController
-      resources "/messages", MessageController, except: [:new, :edit]
-    end
+  resources "/users", UserController
+  resources "/messages", MessageController, except: [:new, :edit]
+end
+```
 
 ## Working with curl
 
-Insert new message
+Insert a new message:
 
-    ➜ curl -i -X POST localhost:4000/api/messages --header "Content-Type: application/json" \
-       -d '{"message": {"text": "hello world"}}'
+```shell
+curl -i -X POST localhost:4000/api/messages --header "Content-Type: application/json" \
+ -d '{"message": {"text": "hello world"}}'
+```
+```output
+201 Created
+{
+  "data": {
+    "id": 1,
+    "text": "hello world
+  }
+}
+```
 
-    201 Created
-    {
-      "data": {
-        "id": 1,
-        "text": "hello world
-      }
-    }
+```shell
+curl -i -X POST localhost:4000/api/messages --header "Content-Type: application/json" \
+ -d '{"message": {}}'
+```
+```output
+422 Unprocessable Entity
+{
+  "errors":{
+    "text":["can't be blank"]
+  }
+}
+```
 
-    ➜ curl -i -X POST localhost:4000/api/messages --header "Content-Type: application/json" \
-       -d '{"message": {}}'
+Get message:
 
-    422 Unprocessable Entity
-    {
-      "errors":{
-        "text":["can't be blank"]
-      }
-    }
+```shell
+curl -i -X GET localhost:4000/api/messages/1
+```
+```output
+200 OK
+{
+  "data": {
+    "id": 1,
+    "text": "hello world
+  }
+}
+```
 
-Get message
+```shell
+curl -i -X GET localhost:4000/api/messages/1000000
+```
+```output
+404 Not Found
+....
+```
 
-    ➜ curl -i -X GET localhost:4000/api/messages/1
-    200 OK
-    {
-      "data": {
-        "id": 1,
-        "text": "hello world
-      }
-    }
+Update a message:
 
-    curl -i -X GET localhost:4000/api/messages/1000000
-    404 Not Found
-    ....
+```shell
+curl -i -X PUT localhost:4000/api/messages/1 --header "Content-Type: application/json" \
+ -d '{"message": {"text": "hello world 1"}}'
+```
+```output
+200 OK
+{
+  "data":{
+    "id": 1,
+    "text": "hello world 1"
+  }
+}
+```
 
-Update message
+```shell
+curl -i -X PATCH localhost:4000/api/messages/1 --header "Content-Type: application/json" \
+ -d '{"message": {"text": "hello world 1"}}'
+```
+```output
+200 OK
+{
+  "data":{
+    "id":4,
+    "text":"hello world 1"
+  }
+}
+```
 
-    ➜ curl -i -X PUT localhost:4000/api/messages/1 --header "Content-Type: application/json" \
-       -d '{"message": {"text": "hello world 1"}}'
+```shell
+curl -i -X GET localhost:4000/api/messages/1
+```
+```output
+200 OK
+{
+  "data":{
+    "id":1,
+    "text":"hello world 1"
+  }
+}
+```
 
-    200 OK
-    {
-      "data":{
-        "id": 1,
-        "text": "hello world 1"
-      }
-    }
+Delete a message
 
-    ➜ curl -i -X PATCH localhost:4000/api/messages/1 --header "Content-Type: application/json" \
-       -d '{"message": {"text": "hello world 1"}}'
+```shell
+curl -i -X DELETE localhost:4000/api/messages/1
+```
+```output
+204 No Content
 
-    200 OK
-    {
-      "data":{
-        "id":4,
-        "text":"hello world 1"
-      }
-    }
+# 204 means that the content no longer exist but the client does not need to
+# navigate away from the page
+```
 
-    ➜ curl -i -X GET localhost:4000/api/messages/1
+Insert more messages:
 
-    200 OK
-    {
-      "data":{
-        "id":1,
-        "text":"hello world 1"
-      }
-    }
+```shell
+curl -X POST localhost:4000/api/messages --header "Content-Type: application/json" \
+ -d '{"message": {"text": "hello world"}}'
+```
+```output
+{"data":{"id":2,"text":"hello world"}}
+```
 
-Delete message
+```shell
+curl -X POST localhost:4000/api/messages --header "Content-Type: application/json" \
+ -d '{"message": {"text": "hello world"}}'
+```
+```output
+{"data":{"id":2,"text":"hello world"}}
+```
 
-    ➜ curl -i -X DELETE localhost:4000/api/messages/1
+List messages:
 
-    204 No Content
-
-    # 204 means that the content no longer exist but the client does not need to
-    # navigate away from the page
-
-Insert more messages
-
-    ➜ curl -X POST localhost:4000/api/messages --header "Content-Type: application/json" \
-      -d '{"message": {"text": "hello world"}}'
-
-    {"data":{"id":2,"text":"hello world"}}
-
-    ➜ curl -X POST localhost:4000/api/messages --header "Content-Type: application/json" \
-      -d '{"message": {"text": "hello world"}}'
-
-    {"data":{"id":2,"text":"hello world"}}
-
-List messages
-
-    ➜ curl -i -X GET localhost:4000/api/messages
-
-    HTTP/1.1 200 OK
-    {
-      "data":
-      [
-        {"id":2,"text":"hello world"},
-        {"id":3,"text":"hello world"}
-      ]
-    }
+```shell
+curl -i -X GET localhost:4000/api/messages
+```
+```output
+HTTP/1.1 200 OK
+{
+  "data":
+  [
+    {"id":2,"text":"hello world"},
+    {"id":3,"text":"hello world"}
+  ]
+}
+```
 
 ## Working with HTTPoision
 
 ### List
 
-    iex> (HTTPoison.post! "localhost:4000/api/messages",
-          Jason.encode!(%{message: %{text: "some_text"}}),
-          [{"Content-Type", "application/json"}])
-
-    %HTTPoison.Response{
-      body: "{\"data\":{\"id\":19,\"text\":\"some_text\"}}",
-      headers: [
-        {"cache-control", "max-age=0, private, must-revalidate"},
-        {"content-length", "37"},
-        {"content-type", "application/json; charset=utf-8"},
-        {"date", "Sat, 04 Jun 2022 06:25:40 GMT"},
-        {"location", "/messages/19"},
-        {"server", "Cowboy"},
-        {"x-request-id", "FvVW3A5jzPK8M_sAAACk"}
-      ],
-      request: %HTTPoison.Request{
-        body: "{\"message\":{\"text\":\"some_text\"}}",
-        headers: [{"Content-Type", "application/json"}],
-        method: :post,
-        options: [],
-        params: %{},
-        url: "http://localhost:4000/api/messages"
-      },
-      request_url: "http://localhost:4000/api/messages",
-      status_code: 201
-    }
+```elixir
+iex> (HTTPoison.post! "localhost:4000/api/messages",
+      Jason.encode!(%{message: %{text: "some_text"}}),
+      [{"Content-Type", "application/json"}])
+```
+```output
+%HTTPoison.Response{
+  body: "{\"data\":{\"id\":19,\"text\":\"some_text\"}}",
+  headers: [
+    {"cache-control", "max-age=0, private, must-revalidate"},
+    {"content-length", "37"},
+    {"content-type", "application/json; charset=utf-8"},
+    {"date", "Sat, 04 Jun 2022 06:25:40 GMT"},
+    {"location", "/messages/19"},
+    {"server", "Cowboy"},
+    {"x-request-id", "FvVW3A5jzPK8M_sAAACk"}
+  ],
+  request: %HTTPoison.Request{
+    body: "{\"message\":{\"text\":\"some_text\"}}",
+    headers: [{"Content-Type", "application/json"}],
+    method: :post,
+    options: [],
+    params: %{},
+    url: "http://localhost:4000/api/messages"
+  },
+  request_url: "http://localhost:4000/api/messages",
+  status_code: 201
+}
+```
 
 See the status code is 201 and response "location" is "/messages/19",
 so the browser will redirect to that page
 
 ### Delete
 
-    iex> HTTPoison.delete! "localhost:4000/api/messages/7"
-    %HTTPoison.Response{
-      body: "",
-      headers: [
-        {"cache-control", "max-age=0, private, must-revalidate"},
-        {"date", "Sat, 04 Jun 2022 06:45:01 GMT"},
-        {"server", "Cowboy"},
-        {"x-request-id", "FvVX6kggC-OBkLkAAAAi"}
-      ],
-      request: %HTTPoison.Request{
-        body: "",
-        headers: [],
-        method: :delete,
-        options: [],
-        params: %{},
-        url: "http://localhost:4000/api/messages/7"
-      },
-      request_url: "http://localhost:4000/api/messages/7",
-      status_code: 204
-    }
+```elixir
+iex> HTTPoison.delete! "localhost:4000/api/messages/7"
+```
+```output
+%HTTPoison.Response{
+  body: "",
+  headers: [
+    {"cache-control", "max-age=0, private, must-revalidate"},
+    {"date", "Sat, 04 Jun 2022 06:45:01 GMT"},
+    {"server", "Cowboy"},
+    {"x-request-id", "FvVX6kggC-OBkLkAAAAi"}
+  ],
+  request: %HTTPoison.Request{
+    body: "",
+    headers: [],
+    method: :delete,
+    options: [],
+    params: %{},
+    url: "http://localhost:4000/api/messages/7"
+  },
+  request_url: "http://localhost:4000/api/messages/7",
+  status_code: 204
+}
+```
 
-## Phoenix generators
+## Phoenix Generators
 
 **Messages**
 

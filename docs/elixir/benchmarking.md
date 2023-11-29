@@ -1,20 +1,28 @@
-## Benchmarking
+# Benchmarking
 
-### Measure function execution time
+## Measure Function Execution Time
 
-    iex> :timer.tc(fn ->
-      IO.puts("hello benchmark")
-    end)
+```elixir
+iex> :timer.tc(fn ->
+  IO.puts("hello benchmark")
+end)
+```
+```output
+hello benchmark
+{92, :ok}
+```
 
-    hello benchmark
-    {92, :ok}
+## Measure File Script Execution Time
 
-### Measure file script execution time
+```shell
+echo 'IO.puts("hi")' > script.exs
+```
 
-    ➜ echo 'IO.puts("hi")' > script.exs
-
-    iex> :timer.tc(fn ->
-      Code.eval_file "script.exs"
-    end)
-
-    {419, {:ok, []}} # microseconds
+```elixir
+iex> :timer.tc(fn ->
+  Code.eval_file "script.exs"
+end)
+```
+```output
+{419, {:ok, []}} # microseconds
+```

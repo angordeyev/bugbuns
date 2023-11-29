@@ -2,17 +2,23 @@
 
 ## Help
 
-    ➜ mix help test
+```shell
+mix help test
+```
 
 ## Run Tests in Interactive Mode
 
-    ➜ iex -S mix test
+```shell
+iex -S mix test
+```
 
 ## List Tests
 
 Run with `--trace` options and see tests listed in green
 
-    ➜ mix test --trace
+```shell
+mix test --trace
+```
 
 ## Filter Tests
 
@@ -20,43 +26,59 @@ Run with `--trace` options and see tests listed in green
 
 To mark single test use `@tag :wip`, it is equivalent of `@tag wip: true`
 
-    @tag :wip
-    test "sometest" do
-      #...
-    end
+```elixir
+@tag :wip
+test "sometest" do
+  #...
+end
+```
 
-Or an entire module
+Or an entire module:
 
-    def SomeTestModule do
-      ...
-      @moduletag :wip
-      ...
-    end
+```elixir
+def SomeTestModule do
+  ...
+  @moduletag :wip
+  ...
+end
+```
 
-Run tagged test
+Run tagged test:
 
-    ➜ mix test --only wip
+```shell
+mix test --only wip
+```
 
 ### Filter Tests in Files
 
-Run tests in a file
+Run tests in a file:
 
-    ➜ mix test path/to/test/some_test.exs
+```shell
+mix test path/to/test/some_test.exs
+```
 
-Run tests using path and line
+Run tests using a path and a line:
 
-    ➜ mix test path/to/test/come_test.exs:10
+```shell
+mix test path/to/test/come_test.exs:10
+```
 
 ### Filter Using Describe Section
 
-Describe can be used as tag to filter tests to run
+`describe` can be used as a tag to filter tests to run:
 
-    ➜ mix test --only describe:"described test"
+```shell
+mix test --only describe:"described test"
+````
 
-Or to list tests, filtered tests will be shown in green text
+Or to list tests, filtered tests will be shown in green text:
 
-    ➜ mix test --trace --only describe:"described test"
+```shell
+mix test --trace --only describe:"described test"
+```
 
 ### Print Slowest Tests
 
-    ➜ mix test --slowest <n>
+```shell
+mix test --slowest <n>
+```

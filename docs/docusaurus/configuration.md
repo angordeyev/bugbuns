@@ -23,24 +23,26 @@ https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs
 
 ## Change Folders
 
-    docusaurus.config.js
-
-    presets: [
-      [
+```js title="docusaurus.config.js"
+...
+presets: [
+  [
+    ...
+    ({
+      docs: {
+        path: 'docs1'
         ...
-        ({
-          docs: {
-            path: 'docs1'
-            ...
-          },
-          blog: {
-            path: 'blog1',
-            ...
-          }
-        }),
+      },
+      blog: {
+        path: 'blog1',
         ...
-      ],
-    ],
+      }
+    }),
+    ...
+  ],
+],
+...
+```
 
 ## Docs as the Start Page
 
