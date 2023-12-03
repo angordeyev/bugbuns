@@ -2,6 +2,12 @@
 
 ## Tasks
 
+### Getting Help
+
+```shell
+npm help
+```
+
 ### Shorter Commands
 
 ```shell
@@ -10,11 +16,111 @@ npm i cowsay
 # The full version
 npm install cowsay
 ```
+### Run Package
+
+With a package version:
+
+```shell
+npx cowsay@latest hello
+```
+
+With parameters:
+
+```shell
+npx create-docusaurus --help
+```
+
+### Scripts
+
+To add a script edit `package.json` file:
+
+```JSON
+{
+  ...
+  "scripts": {
+    "echo": "echo"
+  },
+  ...
+}
+```
+
+Using the script:
+
+```shell
+npm run echo hello
+```
+```output
+
+> some-package@1.0.0 echo
+> echo hello
+
+hello
+```
+
+List scripts:
+
+```shell
+npm run
+```
+```output
+Scripts available in some-package@1.0.0 via `npm run-script`:
+  echo
+    echo
+```
 
 ### Install Package
 
+### Locally
+
 ```shell
 npm i cowsay
+```
+
+The package name and the version will be added to `package.json`:
+
+```JSON
+...
+"cowsay": "^1.5.0",
+...
+```
+
+And the package with its dependencies will be added to `node_modules` folder.
+
+### Globally
+
+Install a package:
+
+```shell
+sudo npm i -g cowsay
+```
+
+The package will be installed in `/usr/lib/node_modules/` folder. And the link will be created for the execution file in `/usr/bin/` foler.
+
+```shell
+ls -l /usr/bin/cowsay
+```
+```output
+cowsay -> ../lib/node_modules/cowsay/cli.js
+```
+
+Using:
+
+```shell
+cowsay hello
+```
+
+### Uninstall Package
+
+#### Locally
+
+```shell
+npm un <package>
+```
+
+#### Globally
+
+```shell
+sudo npm un -g <package>
 ```
 
 ### Show Package Information
@@ -51,5 +157,4 @@ The default versioning used `^` prefix.
 
 ### Scoped Packages
 
-The package can consist of: @<scope>/<package>@<tag>. Scope is a way of grouping packages together. It is ogranization name usually.
-
+The package may consist of: @<scope>/<package>@<tag>. Scope is a way of grouping packages together. It is ogranization name usually.
