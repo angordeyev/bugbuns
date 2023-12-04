@@ -38,7 +38,7 @@ To add a script edit `package.json` file:
 {
   ...
   "scripts": {
-    "echo": "echo"
+    "say": "echo"
   },
   ...
 }
@@ -47,7 +47,7 @@ To add a script edit `package.json` file:
 Using the script:
 
 ```shell
-npm run echo hello
+npm run say hello
 ```
 ```output
 
@@ -67,6 +67,60 @@ Scripts available in some-package@1.0.0 via `npm run-script`:
   echo
     echo
 ```
+
+Scripts can run npm packages:
+
+```js title="package.json"
+{
+  ...
+  "scripts": {
+    "cowhello": "cowsay hello",
+    ...
+  }
+  ...
+}
+````
+
+```shell
+npm run cowhello
+```
+```output
+> some-package@1.0.0 cowhello
+> cowsay hello
+
+ _______
+< hello >
+ -------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
+Default script names:
+
+`npm start` is a short form for `npm run start` and will run:
+  * `prestart`
+  * `start`
+  * `poststart`
+
+The other popular Life Cycle scripts are:
+
+  * `npm test`
+  * `npm stop`
+  * `npm restart`
+  * `npm ci`
+  * `npm run <user defined>`
+  * `npm cache add`
+  * `npm diff`
+  * `npm install`
+  * `npm pack`
+  * `npm publish`
+  * `npm rebuild`
+  * `npm version`
+
+See more docs at  [Life Cycle Scripts. npm Docs.](https://docs.npmjs.com/cli/v10/using-npm/scripts#life-cycle-scripts)
 
 ### Install Package
 
@@ -157,4 +211,4 @@ The default versioning used `^` prefix.
 
 ### Scoped Packages
 
-The package may consist of: @<scope>/<package>@<tag>. Scope is a way of grouping packages together. It is ogranization name usually.
+The package may consist of: `@<scope>/<package>@<tag>`. Scope is a way of grouping packages together. It is ogranization name usually.
