@@ -168,6 +168,9 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        // The default languages are:
+        // markdown, markup, jsx, tsx, swift, kotlin, objectivec,
+        // js-extras, reason, rust, graphql, yaml, go, cpp, python
         additionalLanguages: ['elixir', 'bash', 'diff', 'json', 'javascript', 'erlang'],
       },
     }),
