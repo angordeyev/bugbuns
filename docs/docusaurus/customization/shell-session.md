@@ -1,4 +1,4 @@
-# Shell Session
+# The Shell Session
 
 ## Resources
 
