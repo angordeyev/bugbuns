@@ -2,7 +2,7 @@
 
 ## context.reverso.net
 
-Ctrl-Alt-T - translate using Context.Reverso
+<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> - translate using Context.Reverso.
 
 ## Plugins
 
