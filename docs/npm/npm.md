@@ -16,7 +16,7 @@ npm i cowsay
 # The full version
 npm install cowsay
 ```
-### Run Package
+### Run a Package
 
 With a package version:
 
@@ -122,7 +122,7 @@ The other popular Life Cycle scripts are:
 
 See more docs at  [Life Cycle Scripts. npm Docs.](https://docs.npmjs.com/cli/v10/using-npm/scripts#life-cycle-scripts)
 
-### Install Package
+### Install a Package
 
 ### Locally
 
@@ -163,7 +163,7 @@ Using:
 cowsay hello
 ```
 
-### Uninstall Package
+### Uninstall a Package
 
 #### Locally
 
@@ -197,6 +197,13 @@ rc: 18.0.0-rc.3
 
 npm `dist-tags` role is close to git branches than git tags.
 
+
+### Init
+
+`npm create foo` or `npm init foo` is the same as `npm exec create-foo` or `npx create-foo`.
+
+[More about npm init](https://docs.npmjs.com/cli/v8/commands/npm-init).
+
 ### Versions
 
 Tha package version has the structure: `<major>.<minor>.<patch>`
@@ -207,8 +214,34 @@ The default versioning used `^` prefix.
 
 [Semver Calculator](https://semver.otterlord.dev/)
 
-## Repository
+### Command Aliases
+
+```shell
+npm run-script --help
+```
+```output
+...
+aliases: run, rum, urn
+...
+```
+
+```shell
+npm init --help`
+```
+```output
+...
+Usage:
+npm init <package-spec> (same as `npx <package-spec>`)
+...
+aliases: create, innit
+...
+```
 
 ### Scoped Packages
 
 The package may consist of: `@<scope>/<package>@<tag>`. Scope is a way of grouping packages together. It is ogranization name usually.
+
+## Resources
+
+* [npm init](https://docs.npmjs.com/cli/v10/commands/npm-init)
+* [npx vs npm exec](https://docs.npmjs.com/cli/v8/commands/npm-exec#npx-vs-npm-exec)
