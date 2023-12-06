@@ -46,8 +46,9 @@ Some table
 
 ### Code Blocks
 
-HTML comment is used to separate code blocks
+HTML comment is used to separate indented code blocks:
 
+```
     {
       Codeblock1
     }
@@ -57,6 +58,7 @@ HTML comment is used to separate code blocks
     {
       Codeblock21
     }
+```
 
 ### Quote
 
@@ -127,11 +129,13 @@ n.d. - no date
 
 HTML comment is used to separate quote blocks.
 
+```
 > Quote 1
 
 <!---->
 
 > Quote 2
+```
 
 ## Resources
 

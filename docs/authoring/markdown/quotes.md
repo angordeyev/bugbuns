@@ -13,7 +13,7 @@
 
 #### Forum Post
 
-> Note that, although the citation requires "Lastname, F. M.", all of those pieces 
+> Note that, although the citation requires "Lastname, F. M.", all of those pieces
 > might not beavailable on Stack Overflow, where some users choose to use pseudoynyms.
 > In this case, you should use the name the user chooses to go by here (e.g., "Shog9", 
 > "Machavity", etc.).
@@ -23,10 +23,10 @@ https://meta.stackoverflow.com/a/397905)</cite>
 
 #### Documentation
 
-> The ARG instruction defines a variable that users can pass at build-time to the builder with the docker 
-> build command using the --build-arg <varname>=<value> flag.
+> The ARG instruction defines a variable that users can pass at build-time to the builder with the docker
+> build command using the --build-arg `<varname>`=`<value>` flag.
 >
-> The ENV instruction sets the environment variable <key> to the value <value>.
+> The ENV instruction sets the environment variable `<key>` to the value `<value>`.
 > The environment variables set using ENV will persist when a container is run from the resulting image.
 >
 > -- <cite>[Dockerfile reference. Docker Docs.](https://docs.docker.com/engine/reference/builder/)</cite>
@@ -35,39 +35,39 @@ https://meta.stackoverflow.com/a/397905)</cite>
 
 > Singleline quote
 
-<!---->
-
-> Multiline  
+> Multiline\
 > quote
 
 ### Quoting Fragment that Contains Code
 
-> The equivalent in JSON would be: 
+> The equivalent in JSON:
 >
+> ```
+> {
+>   "fruit": [
 >     {
->       "fruit": [
->         {
->           "name": "apple",
->           "geometry": { "shape": "round", "note": "..."},
->           "color": [
->             { "name": "red", "note": "..." },
->             { "name": "green", "note": "..." }
->           ]
->         },
->         {
->           "name": "banana",
->           "color": [
->             { "name": "yellow", "note": "..." }
->           ]
->         }
+>       "name": "apple",
+>       "geometry": { "shape": "round", "note": "..."},
+>       "color": [
+>         { "name": "red", "note": "..." },
+>         { "name": "green", "note": "..." }
+>       ]
+>     },
+>     {
+>       "name": "banana",
+>       "color": [
+>         { "name": "yellow", "note": "..." }
 >       ]
 >     }
->     
-> -- <cite>[Learn X in y Minutes Where x=TOML. Learn X in Y minutes.](https://learnxinyminutes.com/docs/toml/)</cite>   
+>   ]
+> }
+> ```
+>
+> -- <cite>[Learn X in y Minutes Where x=TOML. Learn X in Y minutes.](https://learnxinyminutes.com/docs/toml/)</cite>
 
 ### Link to Author
 
-> The secret to creativity is knowing how to hide your sources.  
+> The secret to creativity is knowing how to hide your sources.
 > -- <cite>Albert Einstein</cite>
 
 ## Links

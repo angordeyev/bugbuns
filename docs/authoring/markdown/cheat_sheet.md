@@ -9,7 +9,7 @@
 
 ## Keyboar Shortcuts
 
-<kbd>a<kbd>
+<kbd>a</kbd>
 <kbd>Ctrl</kbd>+<kbd>A</kbd>
 
 ## References
