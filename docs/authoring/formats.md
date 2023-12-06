@@ -6,7 +6,7 @@
 
 # RST
 
-[SPHINX](sphinx-doc.org)
+[SPHINX](https://sphinx-doc.org/)
 
 # MDX
 

@@ -12,6 +12,10 @@ Leave articles in headers. The rules for skipping articles maybe tricky and basi
 
 Use `\` as a new line character. It is supported by MDX and CommonMark.
 
+## The Links Traling Character
+
+Use `/` trailing charatcter for the main site page links: `https://www.wikipedia.org/`. It is copied this way from a browser address bar.
+
 ## Resources
 
 * [What's the general rule for dropping articles in article & section titles or in figure & table captions? StackExchange.](https://english.stackexchange.com/questions/38759/whats-the-general-rule-for-dropping-articles-in-article-section-titles-or-in)

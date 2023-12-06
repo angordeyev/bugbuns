@@ -48,19 +48,19 @@ Sublimetext is for text editing, some of the features are suitable for documenta
 * Expand/Collapse, Goto, Dive.
   * Expand/Collapse: ex
   * Goto
-  * Dive hides the upper level from the left bar and shows only the lefels bellow, examples:Workflowy](https://workflowy.com/), [hex.pm](hex.pm), 
+  * Dive hides the upper level from the left bar and shows only the lefels bellow, examples:Workflowy](https://workflowy.com/), [hex.pm](https://hex.pm)
 * Show/hide on a button ([Docusaurus](https://docusaurus.io/))
 * Hide automatically ([Fly.io](https://fly.io/docs/))
-* Tabs on the left panel, example: [hex.pm](hex.pm), "GUIDES", "MODULES", "MIX TASKS"
-* Navigate to headers using scroll like [hex.pm](hex.pm)
+* Tabs on the left panel, example: [hex.pm](https://hex.pm/), "GUIDES", "MODULES", "MIX TASKS"
+* Navigate to headers using scroll like [hex.pm](https://hex.pm/)
 
 #### Multiple Panels
 
-* Construct panels, choose number of panels, interaction, Show/Hide Panels like in SublimeText 
+* Construct panels, choose number of panels, interaction, Show/Hide Panels like in SublimeText
 * Sync the navigation panel when link is clicked in a document
 * Multiple panels and sync between them
   * The left panel is navigaio, the right panel is content
-  * The left panel is navigation, the middle panel is content, the right panel is code, example: [Slate](slatedocs.github.io/slate/) 
+  * The left panel is navigation, the middle panel is content, the right panel is code, example: [Slate](https://slatedocs.github.io/slate/)
 
 ### Terminal
 
@@ -70,7 +70,7 @@ Sublimetext is for text editing, some of the features are suitable for documenta
 
 * [Algolia](https://www.algolia.com/)
 * [typesense](https://typesense.org/)
-* [Meilisearch](meilisearch.com/)
+* [Meilisearch](https://meilisearch.com/)
 * [Elasticsearch](https://www.elastic.co/)
 
 ### Themes

@@ -2,7 +2,7 @@
 
 ## Tools
 
-[diagrams.net](diagrams.net)
+[diagrams.net](https://diagrams.net/)
 [yEd - graph editor](https://www.yworks.com/products/yed)
 [gleek_](https://www.gleek.io/)
 [miro](https://miro.com/)
