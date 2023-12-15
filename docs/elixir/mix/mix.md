@@ -1,4 +1,4 @@
-# mix
+# Mix
 
 Mix is a build tool that provides tasks for creating, compiling, and testing
 Elixir projects. Mix unit is called "task".
