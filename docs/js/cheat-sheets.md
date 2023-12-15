@@ -6,13 +6,13 @@
 
 ## `let` and `const`
 
-Use `let` and `const ` because `var` does not limit variables visibility to the scrope inside curly braces.
+Use `let` and `const ` because `var` does not limit variables visibility to the scope inside curly braces.
 
 ## Deconstructing
 
 ```js
-const [x, y] = [1, 2]
-const {x, y} = {a: 1, b: 2}
+const [x, y] = [1, 2];
+const {x, y} = {a: 1, b: 2};
 ```
 
 ## Exit Node Contole
