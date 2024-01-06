@@ -39,7 +39,11 @@ defmodule TelegramBot.MixProject do
 end
 ```
 
-Add the bot token to the config:
+Add the bot token to the secrets or config:
+
+```shell
+fly secrets set TELEGRAM_BOT_TOKEN=<token>
+```
 
 ```elixir title="config/config.exs"
 ...
@@ -86,10 +90,22 @@ end
 
 ## Deployment
 
-Enter in the application folder and got through the following steps:
+Enter the application folder and go through the following steps.
+
+Create the application deployment configuration:
 
 ```shell
-fly launch
+fly launch --no-deploy
+```
+
+Set `min_machines_running = 1` in the deployment configuration to make the application always running:
+
+```toml title="fly.tom"
+#...
+[http_service]
+  #...
+  min_machines_running = 1
+  #...
 ```
 
 Deploy:
