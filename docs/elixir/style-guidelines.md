@@ -1,4 +1,4 @@
-## Guidelines
+## Style Guidelines
 
 ## Links
 
@@ -62,6 +62,12 @@ defmodule MyModuleHTML do
   # Define other functions here.
   # Use blank lines even for overloaded functions
   # Group one line functions without blank line
+
+  # Function with spec
+  @spec to_string(atom) :: String.t()
+  def to_string() do
+    # ...
+  end
 
   # Omit parentheses when there are no function arguments
   def some_overloaded_function, do: :ok
