@@ -38,13 +38,6 @@ mix escript.install hex livebook
 asdf reshim
 ```
 
-### List All Available Versions
-
-```shell
-asdf list all erlang
-asdf list all elixir
-```
-
 ### Set Global Default Versions
 
 ```shell
@@ -81,7 +74,7 @@ asdf uninstall elixir <version>
 
 ### Build Host
 
-Unattanded security updates  are enable by default in Ubuntu.
+Unattanded security updates are enable by default in Ubuntu.
 
 To create a build and run projects:
 
@@ -171,3 +164,21 @@ postgres=# \q
 
 [What is the canonical way of installing Elixir or Erlang > 19 with `nix` on a non-NixOS system? StackOverflow.](https://stackoverflow.com/questions/51371028/what-is-the-canonical-way-of-installing-elixir-on-erlang-19-with-nix-on-a-no/51384383#51384383)
 [Elixir 1.5.1 with Erlang 20.0 on NixOS 18.03? Reddit.](https://www.reddit.com/r/NixOS/comments/73ceks/elixir_151_with_erlang_200_on_nixos_1803/)
+
+## Troubleshooting
+
+### Installing an Old Version of Erlang if OpenSSL 1.1.1 is missing
+
+Build OpenSSL from sources
+
+    cd /usr/local/src/
+    sudo git clone https://github.com/openssl/openssl.git -b OpenSSL_1_1_1-stable openssl-1.1.1m
+    cd openssl-1.1.1m
+    sudo ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib
+    sudo make
+    sudo make test
+    sudo make install_sw
+
+Install Erlang
+
+    KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/local/openssl-1.1.1" asdf install erlang 23.3
