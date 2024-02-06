@@ -87,13 +87,27 @@ mix archive.install hex phx_new
 
 ## Tasks
 
+### Working with Depencencies
+
+List deps tasks:
+
+```shell
+mix help | grep "deps\."
+```
+
+Get help for a task:
+
+```shell
+mix help deps.clean
+```
+
 ### Remove Unused Dependencies
 
 ```shell
 mix deps.clean --unlock --unused
 ```
 
-## Custom mix Task
+### Custom mix Task
 
 [Elixir School - Custom Mix Tasks](https://elixirschool.com/en/lessons/intermediate/mix_tasks)
 
