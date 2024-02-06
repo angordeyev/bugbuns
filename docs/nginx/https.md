@@ -9,7 +9,7 @@ Add A record for the subdomain.
 
 Install NGINX and Certbot:
 
-```bash
+```shell
 # Install NIGNX
 sudo apt-get update
 sudo apt-get -y install nginx
@@ -21,7 +21,7 @@ sudo apt-get install python3-certbot-nginx
 
 ## Generate a Certificate
 
-```bash
+```shell
 sudo certbot --nginx -d subdomain.domain.com
 ```
 
