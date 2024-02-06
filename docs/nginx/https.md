@@ -1,6 +1,6 @@
-# Setup HTTPS using Certbot
+# HTTPS Setup
 
-The example uses Debian.
+HTTPS Setup using Certbot. The example uses Debian.
 
 ## Prerequisites
 
