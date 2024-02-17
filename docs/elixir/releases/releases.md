@@ -1,14 +1,5 @@
 # Releases
 
-## Phoenix releases
-
-Generate release helper files for Phoenix:
-
-```shell
-mix phx.gen.release
-MIX_ENV=prod mix release
-```
-
 ## Deploy release
 
 Create a database:
@@ -113,11 +104,12 @@ Cross compiling is compiling for another platform
 
 ## Resources
 
-[Unit file described](https://debian.pro/2602)
-[Environment variables](https://mbuffa.github.io/tips/20210916-elixir-environment-variables/#:~:text=An%20environment%20variable%20is%20a,on%20that%20aspect%20for%20beginners.&text=And%20the%20same%20call%20would%20work%20in%20your%20application%20source%20code)
-[Elixir releases](https://staknine.com/)
-[Deployment to server](https://elixirforum.com/t/what-is-the-best-way-to-deploy-a-phoenix-application-to-ec2-or-digital-ocean/41284/3)
-[Is there a typical way to pass a password to a Systemd Unit file?](https://unix.stackexchange.com/questions/391040/is-there-a-typical-way-to-pass-a-password-to-a-systemd-unit-file)
-[Deploying Go Application with systemd](https://jonathanmh.com/deploying-go-apps-systemd-10-minutes-without-docker/)
-[Storing secret environment variables for deamon using libsecret](https://unix.stackexchange.com/questions/391040/is-there-a-typical-way-to-pass-a-password-to-a-systemd-unit-file)
-[Config and Releases](https://elixir-lang.org/getting-started/mix-otp/config-and-releases.html)
+* [Configuration and Releases. Elixir Documentation.](https://hexdocs.pm/elixir/config-and-releases.html)
+* [Deploying with Releases. Phoenix Documentation.](https://hexdocs.pm/phoenix/releases.html)
+* [StakNine](https://staknine.com/)
+* [Unit file described](https://debian.pro/2602)
+* [Environment variables](https://mbuffa.github.io/tips/20210916-elixir-environment-variables/#:~:text=An%20environment%20variable%20is%20a,on%20that%20aspect%20for%20beginners.&text=And%20the%20same%20call%20would%20work%20in%20your%20application%20source%20code)
+* [Deployment to server](https://elixirforum.com/t/what-is-the-best-way-to-deploy-a-phoenix-application-to-ec2-or-digital-ocean/41284/3)
+* [Is there a typical way to pass a password to a Systemd Unit file?](https://unix.stackexchange.com/questions/391040/is-there-a-typical-way-to-pass-a-password-to-a-systemd-unit-file)
+* [Deploying Go Application with systemd](https://jonathanmh.com/deploying-go-apps-systemd-10-minutes-without-docker/)
+* [Storing secret environment variables for deamon using libsecret](https://unix.stackexchange.com/questions/391040/is-there-a-typical-way-to-pass-a-password-to-a-systemd-unit-file)
