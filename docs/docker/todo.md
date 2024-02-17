@@ -1,3 +1,0 @@
-# TODO
-
-- [ ] Docker without `sudo`
