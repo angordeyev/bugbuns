@@ -5,85 +5,26 @@ Elixir projects. Mix unit is called "task".
 
 ## Getting Help
 
-Print tasks and their description
+Print istalled tasks and their description:
 
 ```shell
 mix help
 ```
 
-Go to [hexdocs.pm](https://hexdocs.pm) and search for `mix` or open [hexdocs.pm/mix/Mix.html](https://hexdocs.pm/mix/Mix.html) for the web docs.
+Print tasks started with prefix:
 
-Get help for the task
+```shell
+mix phx
+mix phx.gen
+```
+
+Get help for the task:
 
 ```shell
 mix help phx.new
 ```
 
-## Working with mix Archives
-
-### Commands
-
-List archives:
-
-```shell
-mix archive
-```
-
-Install a hex archive:
-
-```shell
-mix archive.install hex <package>
-mix archive.install hex <package> <version>
-```
-
-Install a local archive
-
-```shell
-mix archive.install archive.ez
-mix archive.install path/to/archive.ez
-```
-
-Install GitHub archive
-
-```shell
-mix archive.install git https://path/to/git/repo
-mix archive.install git https://path/to/git/repo branch git_branch
-```
-
-Uninstall an archive
-
-```shell
-mix archive.uninstall <package>
-```
-
-### Examples
-
-```shell
-mix archive.install hex phx_new
-```
-
-```shell
-mix archive
-```
-```output
-* hex-1.0.1
-* phx_new-1.6.11
-```
-
-```shell
-mix archive.uninstall phx_new
-```
-
-```shell
-mix archive
-```
-```output
-* hex-1.0.1
-```
-
-```shell
-mix archive.install hex phx_new
-```
+Open [Mix Docs](https://hexdocs.pm/mix/Mix.html) or go to [hexdocs.pm](https://hexdocs.pm) and search for `mix` or  for the web docs.
 
 ## Tasks
 
