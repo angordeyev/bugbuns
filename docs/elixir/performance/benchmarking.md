@@ -1,5 +1,11 @@
 # Benchmarking
 
+## With Hyperfine
+
+```shell
+hyperfine --warmup 2 -S none --export-markdown results.md -- 'elixir -e \'System.halt(0)\'' 'elixir -e \'IO.puts("Hello world")\''
+```
+
 ## Measure Function Execution Time
 
 ```elixir
@@ -26,3 +32,4 @@ end)
 ```output
 {419, {:ok, []}} # microseconds
 ```
+

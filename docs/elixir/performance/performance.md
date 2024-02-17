@@ -59,4 +59,6 @@ With a process:
 
 ## Resources
 
-[There is a huge problem with this sadly, the startup time of the BEAM is too much! ](https://news.ycombinator.com/item?id=25240905)
+* [Why is erlc so quick to start?](https://erlang.org/pipermail/erlang-questions/2015-January/082392.html)
+* [There is a huge problem with this sadly, the startup time of the BEAM is too much! ](https://news.ycombinator.com/item?id=25240905)
+* [How to minimise BEAM startup time? Elixir Forum.](https://elixirforum.com/t/how-to-minimise-beam-startup-time/31913/3)
