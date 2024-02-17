@@ -1,27 +1,8 @@
-# Distributed
+# Nodes
 
 ## Named Node
 
 ### Using Shortname
-
-Run a named node
-
-    ➜ iex --sname a
-    iex(a@computer-name)1>
-
-Define module
-
-    iex> defmodule M, do: def f, do: :shared
-
-Connect to the named node
-
-    ➜ iex --sname b --remsh a
-    iex(a@angarch)1>
-
-Use the code from node "a"
-
-    iex> M.f
-    :shared
 
 ### Using Fullname
 
