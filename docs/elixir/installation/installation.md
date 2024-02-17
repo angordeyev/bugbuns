@@ -31,9 +31,11 @@ KERL_BUILD_DOCS=yes KERL_INSTALL_MANPAGES=yes KERL_INSTALL_HTMLDOCS=yes asdf ins
 asdf install elixir <version>
 ```
 
-Install Livebook
+Install Hex, Phoenix, and Livebook:
 
 ```shell
+mix local.hex
+mix archive.install hex phx_new
 mix escript.install hex livebook
 asdf reshim
 ```
