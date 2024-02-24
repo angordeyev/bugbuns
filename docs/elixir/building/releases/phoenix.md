@@ -70,13 +70,13 @@ mix phx.gen.secret
 Run:
 
 ```shell
-SECRET_KEY_BASE=gK6UgeEmSWn3a9U46EMpwn07A8r4E8jFtZkPrxTyR+FFJP9VDgrARuW24uccyZge \
+SECRET_KEY_BASE=<SECRET_KEY_BASE> \
 DATABASE_URL=ecto://postgres:postgres@localhost/phoenix_release \
 _build/prod/rel/phoenix_release/bin/server
 ```
 
 ```shell
-SECRET_KEY_BASE=gK6UgeEmSWn3a9U46EMpwn07A8r4E8jFtZkPrxTyR+FFJP9VDgrARuW24uccyZge \
+SECRET_KEY_BASE=<SECRET_KEY_BASE> \
 DATABASE_URL=ecto://postgres:postgres@localhost/phoenix_release \
 PHX_SERVER=true _build/prod/rel/phoenix_release/bin/phoenix_release start
 ```
