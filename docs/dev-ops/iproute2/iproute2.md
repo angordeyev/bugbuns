@@ -100,13 +100,15 @@ ip -6 addr
 ## Examples
 
 same, shows network interfaces
-    
-    ip addr
-    ip a
+
+```shell
+ip addr
+ip a
+```
 
 ## Resources
 
-[LARC (Linux Advanced Routing & Traffic Control HOWTO)](https://lartc.org/howto/)
-[Task-centered iproute2 user guide. Daniil Baturin.](https://www.baturin.org/docs/iproute2/#overview-of-iproute2)
-[Linux for Network Engineers: Interface Information](https://netbeez.net/blog/linux-interface-information/)
-[What do the numbers mean in ip rule show command. StackOverflow](https://unix.stackexchange.com/questions/160115/what-do-the-numbers-mean-in-ip-rule-show-command)
+* [LARC (Linux Advanced Routing & Traffic Control HOWTO)](https://lartc.org/howto/)
+* [Task-centered iproute2 user guide. Daniil Baturin.](https://www.baturin.org/docs/iproute2/#overview-of-iproute2)
+* [Linux for Network Engineers: Interface Information](https://netbeez.net/blog/linux-interface-information/)
+* [What do the numbers mean in ip rule show command. StackOverflow](https://unix.stackexchange.com/questions/160115/what-do-the-numbers-mean-in-ip-rule-show-command)
