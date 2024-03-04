@@ -60,8 +60,35 @@ Run multiple commands using an image:
 docker run alpine echo "hello" && echo "world"
 ```
 
-## Dockerfile
+## Context
 
-### Arguments
+Create files:
 
+```shell
+cd $(mktemp -d)
 
+touch 1.txt
+
+cat << EOF > Dockerfile
+FROM debian:latest
+COPY 1.txt 1.txt
+EOF
+```
+
+Run the docker container:
+
+```shell
+docker run -it --rm $(docker build -q .)
+```
+
+See the file in the container:
+
+```shell
+ls 1.txt
+```
+
+```output
+1.txt
+```
+
+## Arguments
