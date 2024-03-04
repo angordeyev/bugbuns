@@ -92,3 +92,9 @@ With `.gitignore` files:
 ```shell
 git clean -fdx
 ```
+
+## Show Changes using Difftool
+
+```shell
+git difftool -t meld --dir-diff <commit_a> <commit_b>
+```
