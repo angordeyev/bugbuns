@@ -41,3 +41,26 @@ docker exec -it <container_name_or_id> bash
 ```shell
 docker run -it -v <volume_name>:/mnt/<volume_name> debian
 ```
+
+## Run and Bind a Container to an IP Address
+
+```shell
+docker run -p 172.17.0.1:8000:5678 hashicorp/http-echo  -text="hello world"
+```
+
+```shell
+curl -i 172.17.0.1:800
+```
+
+```output
+HTTP/1.1 200 OK
+...
+```
+
+```shell
+curl -i 127.0.0.1:8000
+```
+
+```output
+curl: (7) Failed to connect to 127.0.0.1 port 8000 after 0 ms: Couldn't connect to server
+```
