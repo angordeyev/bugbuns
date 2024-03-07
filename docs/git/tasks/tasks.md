@@ -21,6 +21,40 @@ git help branch
 git branch --help
 ```
 
+## Use a Current Directory in a Command
+
+Use `.` to reference a current directory. It is required by many commands.
+
+## Dry Run
+
+```shell
+git add -n .
+git clean -n
+```
+
+## Interactive
+
+```shell
+git add -n .
+git clean -n
+```
+
+## Clean
+
+Remove all files and directories not in local repository:
+
+```shell
+git cliean -fdx
+```
+
+## Resoure Files
+
+Resore all changed and deleted files in a working tree:
+
+```shell
+git restore .
+```
+
 ## Get one File from a Branch
 
 ```shell
