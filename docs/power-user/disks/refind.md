@@ -212,6 +212,6 @@ sudo sed -i 's/#resolution 1024 768.*/resolution 1920 1080/' /mnt/boot/EFI/refin
 
 ## Theming
 
-[Refind theming page](https://www.rodsbooks.com/refind/themes.html)
-[GitHub rEFInd topic](https://github.com/topics/refind)
-[rEFIind page in Arch Linux wiki](https://wiki.archlinux.org/title/REFInd)
+* [Refind theming page](https://www.rodsbooks.com/refind/themes.html)
+* [GitHub rEFInd topic](https://github.com/topics/refind)
+* [rEFIind page in Arch Linux wiki](https://wiki.archlinux.org/title/REFInd)
