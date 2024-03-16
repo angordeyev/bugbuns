@@ -27,4 +27,3 @@ fn with_match(x: i32) -> i32 {
     result
 }
 ```
-
