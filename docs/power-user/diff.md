@@ -2,8 +2,12 @@
 
 Compare directories using diff
 
-    diff -qr directory_1 directory_2
+```shell
+diff -qr directory_1 directory_2
+```
 
 Compare directories using meld
 
-    meld directory_1 directory_2
+```shell
+meld directory_1 directory_2
+```
