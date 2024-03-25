@@ -1,5 +1,10 @@
 # Interesting Projects
 
+## Arcan
+
+* [Arcan Videos](https://arcan-fe.com/videos/)
+* [The Day of a new Command-Line Interface](https://arcan-fe.com/2022/04/02/the-day-of-a-new-command-line-interface-shell/)
+
 ## [LESSWRONG](https://www.lesswrong.com/)
 
 ## [Zulip](https://zulip.com/)
