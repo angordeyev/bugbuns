@@ -2,6 +2,12 @@
 
 Create a universal USB Drive compatible with Linux, macOS, Windows:
 
+Show block devices:
+
+```
+lsblk
+```
+
 ```shell
 # Set a disk:
 DISK=</dev/some>
@@ -17,8 +23,48 @@ partition_to_format=$(lsblk -pJ $DISK | jq -r '.blockdevices[0].children[0].name
 sudo mkfs.exfat ${partition_to_format}
 ```
 
-Check parition table records:
+Show parition table records:
 
 ```shell
 sudo gdisk -l ${DISK}
 ```
+
+Show file system information:
+
+```shell
+sudo lsblk -f ${DISK}
+```
+
+Show more information:
+
+```shell
+sudo lsblk -f ${DISK}
+```
+
+```
+blkid
+```
+
+Change PARTLABEL:
+
+```shell
+sudo sgdisk -c 1:<PARTLABEL> ${DISK}
+```
+
+Change LABEL:
+
+```shell
+# Unmount first
+sudo umount <mount_path>
+
+# Set the label
+sudo exfatlabel ${DISK}<parition_number> universal
+```
+
+Show updated PARTLABEL and LABEL:
+
+```shell
+sudo lsblk --output NAME,FSTYPE,PARTLABEL,LABEL ${DISK}
+```
+
+Label will be used by a file manager.
