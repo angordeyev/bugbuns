@@ -1,85 +1,111 @@
-## Module Attributes
+# Module Attributes
 
-### Simple Project
+## A Simple Project
 
 Module attributes are compile time
 
-Generate the new project
+Generate a new project:
 
-    ➜ mix new hello_attributes
+```shell
+mix new hello_attributes
+```
 
-Add attribute to the module
+Add an attribute to the module:
 
-    @some_attribe IO.puts("hi")
+```elixir
+@some_attribe IO.puts("hi")
 
-    def hello do
-      @some_attribe
-    end
+def hello do
+  @some_attribe
+end
+```
 
-Compile and see "hi" message
+Compile and see "hi" message:
 
-    ➜ mix compile --force
-    Compiling 1 file (.ex)
-    hi
-    Generated hello_attributes app
+```shell
+mix compile --force
+```
 
-Run
+```output
+Compiling 1 file (.ex)
+hi
+Generated hello_attributes app
+```
 
-    ➜ rm -rf _build # remove builded files
-    ➜ iex -S mix
-    Compiling 1 file (.ex)
-    hi
-    Generated hello_attributes app
+Run:
 
-    iex> HelloAttributes.hello()
-    :ok
+```shell
+rm -rf _build # remove builded files
+iex -S mix
+```
 
-### Module Attributes
+```output
+Compiling 1 file (.ex)
+hi
+Generated hello_attributes app
+```
 
-Attributes are compile time and are used as constants
+```elixir
+iex> HelloAttributes.hello()
+:ok
+```
 
-    defmodule OtherModule do
-      def some_const() do
-        IO.puts "hello"
-        "world"
-      end
-    end
+## Module Attributes
 
-    defmodule MyModule do
-      @my_const OtherModule.some_const()
+Attributes are compile time and are used as constants:
 
-      def hello do
-        IO.puts @my_const # world
-      end
-    end
+```elixir
+defmodule OtherModule do
+  def some_const() do
+    IO.puts "hello"
+    "world"
+  end
+end
 
-"hello" is shown at compile time
+defmodule MyModule do
+  @my_const OtherModule.some_const()
 
-    Compiling 1 file (.ex)
-    hello
-    Generated hello_docs app
-    Interactive Elixir (1.13.4) - press Ctrl+C to exit (type h() ENTER for help)
-    iex(1)>
+  def hello do
+    IO.puts @my_const # world
+  end
+end
+```
 
-"world" is is shown at runtime
+"hello" is shown at compile time:
 
-    iex> MyModule.hello
-    world
-    :ok
+```output
+Compiling 1 file (.ex)
+hello
+Generated hello_docs app
+Interactive Elixir (1.13.4) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)>
+```
 
-Or annotations
+"world" is shown at runtime:
 
-    defmodule HelloWorld do
-      @moduledoc """
-      Interaction with the world
-      """
+```elixir
+iex> MyModule.hello
+world
+:ok
+```
 
-      @doc """
-      Prints "hello world"
-      """
-      def hello() do
-      end
-    end
+Or annotations:
 
-    iex> h HelloWorld # Interaction with the world
-    iex> h HelloWorld.hello # Prints "hello world"
+```elixir
+defmodule HelloWorld do
+  @moduledoc """
+  Interaction with the world
+  """
+
+  @doc """
+  Prints "hello world"
+  """
+  def hello() do
+  end
+end
+```
+
+```elixir
+iex> h HelloWorld # Interaction with the world
+iex> h HelloWorld.hello # Prints "hello world"
+```

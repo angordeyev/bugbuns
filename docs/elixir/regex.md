@@ -81,8 +81,28 @@ iex>  capture: :all_but_first)
 # / is the most common delimiter for regular expressions
 iex> ~r/hello/
 ```
+
 ```output
 ~r/hello/
+```
+
+There are other delimeters:
+
+```shell
+IO.inspect(~r|hello|)
+IO.inspect(~r{hello})
+IO.inspect(~r[hello])
+IO.inspect(~r<hello>)
+```
+
+If not allowed delimeters is used the message is shown:
+
+```elixir
+ ~r:hello:
+```
+
+```output
+invalid sigil delimiter: The available delimiters are: //, ||, "", '', (), [], {}, <>
 ```
 
 ```elixir
@@ -209,7 +229,6 @@ Quantifiers
 `{m, n}` - from m to n
 `{m,}` - from m
 `{0,n}` - to n
-
 
 ```elixir
 # Format

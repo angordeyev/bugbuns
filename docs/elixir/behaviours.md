@@ -1,6 +1,6 @@
 ## Behaviours
 
-Define behaviour
+Define a behaviour:
 
 ```elixir
 defmodule Greet do

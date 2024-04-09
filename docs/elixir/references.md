@@ -10,7 +10,7 @@
 
 ## Interesting blogs
 
-[Elixir and engeering](https://felt.com/blog/)
+[Elixir and engineering](https://felt.com/blog/)
 
 ## Projects
 
