@@ -2,10 +2,12 @@
 
 List storage devices:
 
-Or
+```shell
+lsblk
+```
 
 ```shell
-fdisk -l
+sudo fdisk -l
 ```
 
 Set a disk:

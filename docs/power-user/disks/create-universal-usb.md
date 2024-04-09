@@ -37,10 +37,6 @@ sudo lsblk -f ${DISK}
 
 Show more information:
 
-```shell
-sudo lsblk -f ${DISK}
-```
-
 ```
 blkid
 ```
