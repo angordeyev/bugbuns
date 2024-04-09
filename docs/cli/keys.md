@@ -26,7 +26,7 @@ echo "3"
 
 esc=$(echo -en "\e") # cache ESC as test doesn't allow esc codes
 
-while true 
+while true
 do
   read -s -n3 key # wait for user to key in arrows or ENTER
   if [[ $key == $esc[A ]] # up arrow
@@ -41,4 +41,4 @@ done
 
 ## Resources
 
-[How can I create a select menu in a shell script? By Gusss on AskUbuntu](https://askubuntu.com/a/1386907/1672230)
+* [How can I create a select menu in a shell script? By Gusss on AskUbuntu](https://askubuntu.com/a/1386907/1672230)
