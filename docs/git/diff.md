@@ -1,7 +1,13 @@
 # diff
 
-# diff format
+## Config Conflict Style and Merge Tool
 
+```shell
+git config --global merge.conflictStyle diff3
+git config --global merge.tool meld
+```
+
+## diff
 
 Prepare the repo and two working directories with the same content:
 
@@ -98,10 +104,9 @@ hint: To abort and get back to the state before "git rebase", run "git rebase --
 Could not apply 0204a3d... Work2 added
 ```
 
-The branch will be switched to the latest repository commit, it will be show inside shell if plugin is installed. The `HEAD` is the latest commit in the repository.
+Git switches to the latest repo commit, it is shown in a shell if plugin is installed. `HEAD` is the latest commit in the repo.
 
-
-The file will have the following content:
+The file will have the following content for merge style:
 
 ```
 Initial
@@ -112,6 +117,24 @@ Work2
 >>>>>>> 0b5c94f (Work2)
 ```
 
-Meld will show it:
+And for diff3 style:
 
-![Meld](images/meld.png "Meld")
+```
+Initial
+<<<<<<< HEAD
+Work1
+||||||| parent of 0e09ed7 (Work2 added)
+=======
+Work2
+>>>>>>> 0e09ed7 (Work2 added)
+```
+
+`git mergetool` result for `merge` style:
+
+![Meld](images/meld_merge.png "Meld")
+
+`git mergetool` result for `diff3` style:
+
+![Meld](images/meld_diff3.png "Meld")
+
+The result is the same. Please note that `LOCAL` branch is the main branch when doing rebase and `REMOTE` branch is a feature branch.
