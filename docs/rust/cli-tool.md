@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 # CLI Tool
 
 ```shell
