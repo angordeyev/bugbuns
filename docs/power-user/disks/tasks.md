@@ -61,6 +61,18 @@ Add to `/etc/fstab`:
 LABEL=<LABEL>    /mnt/ex    ext4    rw,relatime    0    2
 ```
 
+## Mount a File With a File System
+
+```shell
+mount -o loop disk1.iso /mnt/disk
+```
+
+## Fix Missing Loop Device
+
+```shell
+sudo losetup --verbose --find
+```
+
 ## Resources
 
 * [fstab. archlinux wiki.](https://wiki.archlinux.org/title/Fstab)

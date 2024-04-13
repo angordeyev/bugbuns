@@ -14,4 +14,3 @@ Add regex
 
 * [Argument to open tilix in a new tab in an existing window. GitHub.](https://github.com/gnunn1/tilix/issues/1200)
 * [Clicking on custom links does nothing](https://github.com/gnunn1/tilix/issues/844)
-
