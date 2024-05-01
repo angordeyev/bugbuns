@@ -19,3 +19,6 @@
 ## Tips
 
 [How to Filter a list for a specific struct. StackOverflow.](https://stackoverflow.com/questions/36936763/elixir-how-to-filter-a-list-for-a-specific-struct)
+
+## Alternative to Erlang BEAM
+

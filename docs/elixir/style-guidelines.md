@@ -205,6 +205,21 @@ defmodule MyModuleHTML do
     {'~p ~p received unexpected message in handle_info/2: ~p~n', [mod, proc, msg]}
   end
 
+  def big_object_with_comments do
+    [
+      HelloWeb.Telemetry,
+      Hello.Repo,
+      {DNSCluster, query: Application.get_env(:hello, :dns_cluster_query) || :ignore},
+      {Phoenix.PubSub, name: Hello.PubSub},
+      # Start the Finch HTTP client for sending emails
+      {Finch, name: Hello.Finch},
+      # Start a worker by calling: Hello.Worker.start_link(arg)
+      # {Hello.Worker, arg},
+      # Start to serve requests, typically the last entry
+      HelloWeb.Endpoint
+    ]
+  end
+
   def pattern_matching_function([:foo, :bar, :baz] = params),
     do: Enum.map(args, fn arg -> arg <> " is on a very long line!" end)
 end
