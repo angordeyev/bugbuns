@@ -1,18 +1,18 @@
 # Julia CLI
 
-Evaluate code
+Evaluate code:
 
 ```shell
 julia -e 'println("hello")'
 ```
 
-Evaluate code and run interactive shell
+Evaluate code and run interactive shell:
 
 ```shell
 julia -ie 'println("hello")'
 ```
 
-Multiline
+Multiline:
 
 ```shell
 julia -ie '
