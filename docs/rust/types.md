@@ -21,7 +21,6 @@ type_name_of_val(&a)
 let a = 1;
 let a_ref_1 = &a;
 let a_ref_2 = &a;
-
 ```
 
 

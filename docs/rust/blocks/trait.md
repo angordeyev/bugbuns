@@ -41,6 +41,29 @@ let animal = random_animal(0.632);
 println!("You've randomly chosen an animal, and it says {}", animal.noise());
 ```
 
+A trait for a named tuple:
+
+```rust
+struct Pair(i32, i32);
+
+trait Sum {
+    fn sum(&self) -> i32;
+}
+
+impl Sum for Pair {
+    fn sum(&self) -> i32 {
+        self.0 + self.1
+    }
+}
+
+let p = Pair(1,2);
+p.sum()
+```
+
+```output
+3
+```
+
 ## Resources
 
 * https://doc.rust-lang.org/rust-by-example/trait/dyn.html

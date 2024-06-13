@@ -4,6 +4,26 @@ draft: true
 
 # Utils
 
+## Get a Value Type
+
+```rust
+fn type_of<T>(_: T) -> &'static str {
+    std::any::type_name::<T>()
+}
+
+fn main() {
+    let a = 1;
+    let a_ref = &a;
+    println!("a: {}", type_of(a));
+    println!("a ref: {}", type_of(&a));
+    println!("a ref: {}", type_of(a_ref));
+}
+```
+
+```rust
+std::any::type_name_of_val(&1.1)
+```
+
 ## Get a type Size
 
 ```rust
@@ -35,7 +55,7 @@ mem::size_of_val(&a)
 }
 ```
 
-## Get Memory Address
+## Get a Memory Address
 
 ```rust
 {
@@ -47,6 +67,34 @@ mem::size_of_val(&a)
     println!("a stack addr {:p}", a_ref_2);
     println!("a heap  addr {:p}", a_ref_1.as_ptr());
 }
+```
+
+```rust
+{
+    let a = String::from("text");
+    let a_ref = &a;
+
+    println!("a stack addr {:p}", a_ref);
+    println!("a stack addr {:p}", &a);
+
+    println!("---");
+
+    println!("a heap  addr {:p}", a_ref.as_ptr());
+    println!("a heap  addr {:p}", a.as_ptr());
+    println!("a heap  addr {:p}", (&a).as_ptr());
+
+    println!("---");
+
+    println!("a heap  addr {:p}", &a.as_ptr());
+    println!("a heap  addr {:p}", &a.as_ptr());
+}
+```
+
+```output
+a heap  addr 0x60c1cf29ad00
+a heap  addr 0x60c1cf29ad00
+a heap  addr 0x60c1cf29ad00
+a heap  addr 0x7ffe0d30b728
 ```
 
 ## Get Stack Size

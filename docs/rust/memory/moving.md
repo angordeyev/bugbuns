@@ -197,6 +197,43 @@ vec!(4,5,6).extend(a);
 ───╯
 ```
 
+Partial move:
+
+```rust
+let a = Some(vec!(1,2,3));
+if let Some(b) = a {
+    println!("{:?}", b);
+}
+let c = a;
+```
+
+```output
+[E0382] Error: use of partially moved value: `a`
+   ╭─[command:1:1]
+   │
+ 2 │ if let Some(b) = a {
+   │             ┬
+   │             ╰── value partially moved here
+   │             │
+   │             ╰── help: borrow this binding in the pattern to avoid moving the value: `ref `
+   │
+ 5 │ let c = a;
+   │         ┬
+   │         ╰── value used here after partial move
+```
+
+```rust
+let a = Some(vec!(1,2,3));
+if let Some(b) = &a {
+    println!("{:?}", b);
+}
+let c = a;
+```
+
+```output
+[1, 2, 3]
+```
+
 ## Resources
 
 * [Why am I able to re-assign to a moved variable? StackOverflow.](https://stackoverflow.com/questions/64358363/why-am-i-able-to-re-assign-to-a-moved-variable)
