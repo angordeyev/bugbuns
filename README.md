@@ -4,7 +4,7 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 
 ## Run Local
 
-Development environmnt (with drafts):
+Development environment (with drafts):
 
 ```shell
 npm install docusaurus
@@ -18,6 +18,12 @@ npx docusaurus serve
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+## Build
+
+```shell
+npm install && npm run build
+```
 
 ## Deploy
 
